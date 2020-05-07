@@ -1,2 +1,2 @@
-# MyRosPackages
-ROS Packages i use to simulate my robots
+# Dreamwalker
+Projekt polegający na zaprojektowaniu i zasymulowaniu czworonożnego robota kroczącego.
