@@ -63,6 +63,26 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        link_femur1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_femur2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_femur3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_femur4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         link_shoulder1:
           Alpha: 1
           Show Axes: false
@@ -79,6 +99,26 @@ Visualization Manager:
           Show Trail: false
           Value: true
         link_shoulder4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_tibia1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_tibia2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_tibia3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        link_tibia4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -122,25 +162,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.9264856576919556
+      Distance: 1.332719087600708
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -0.00955331139266491
-        Y: -0.00728012016043067
-        Z: -0.013575512915849686
+        X: 0.030508127063512802
+        Y: -0.007725780364125967
+        Z: -0.028352946043014526
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.2147972732782364
+      Pitch: 0.31979742646217346
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 1.0254002809524536
+      Yaw: 1.1935858726501465
     Saved: ~
 Window Geometry:
   Displays:

@@ -9,7 +9,7 @@
 		<inertial>
 			<mass value="0.388"/>
 			<origin xyz="0 0 0.0155" rpy="0 0 0"/>
-			<inertia ixx="0.001096" ixy="0.000000080024" ixz="-0.000000071131" iyy="0.0006744" iyz="-0.000000005436" izz="0.001658"/>
+			<inertia ixx="0.001096" ixy="0" ixz="0" iyy="0.0006744" iyz="0" izz="0.001658"/>
 		</inertial>
 
 		<collision name="collision_base">
@@ -129,6 +129,208 @@
 
 	</link>
 
+	<!--### FEMURS ### -->
+
+	<link name="link_femur1">
+		
+		<inertial>
+			<mass value="0.0218"/>
+			<origin xyz="-0.012278 0 -0.031262" rpy="0 0 0"/>
+			<inertia ixx="0.00001388" ixy="0" ixz="-0.000000908897" iyy="0.00001369" iyz="0" izz="0.000001695609"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_femur1.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_femur1.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
+	<link name="link_femur2">
+		
+		<inertial>
+			<mass value="0.0218"/>
+			<origin xyz="0.012278 0 -0.031262" rpy="0 0 0"/>
+			<inertia ixx="0.00001388" ixy="0" ixz="0.000000908897" iyy="0.00001369" iyz="0" izz="0.000001695609"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_femur2.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_femur2.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
+	<link name="link_femur3">
+		
+		<inertial>
+			<mass value="0.0218"/>
+			<origin xyz="-0.012278 0 -0.031262" rpy="0 0 0"/>
+			<inertia ixx="0.00001388" ixy="0" ixz="-0.000000908897" iyy="0.00001369" iyz="0" izz="0.000001695609"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_femur3.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_femur3.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
+	<link name="link_femur4">
+		
+		<inertial>
+			<mass value="0.0218"/>
+			<origin xyz="0.012278 0 -0.031262" rpy="0 0 0"/>
+			<inertia ixx="0.00001388" ixy="0" ixz="0.000000908897" iyy="0.00001369" iyz="0" izz="0.000001695609"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_femur4.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_femur4.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
+	<link name="link_tibia1">
+		
+		<inertial>
+			<mass value="0.00651"/>
+			<origin xyz="-0.0025 0.000876 -0.027677" rpy="0 0 0"/>
+			<inertia ixx="0.000003593654" ixy="0" ixz="0" iyy="0.000003455444" iyz="0.000000074876" izz="0.000000165334"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia1.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia1.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
+	<link name="link_tibia2">
+		
+		<inertial>
+			<mass value="0.00651"/>
+			<origin xyz="0.0025 0.000876 -0.027677" rpy="0 0 0"/>
+			<inertia ixx="0.000003593654" ixy="0" ixz="0" iyy="0.000003455444" iyz="0.000000074876" izz="0.000000165334"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia2.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia2.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
+	<link name="link_tibia3">
+		
+		<inertial>
+			<mass value="0.00651"/>
+			<origin xyz="-0.0025 -0.000876 -0.027677" rpy="0 0 0"/>
+			<inertia ixx="0.000003593654" ixy="0" ixz="0" iyy="0.000003455444" iyz="-0.000000074876" izz="0.000000165334"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia3.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia3.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
+	<link name="link_tibia4">
+		
+		<inertial>
+			<mass value="0.00651"/>
+			<origin xyz="0.0025 -0.000876 -0.027677" rpy="0 0 0"/>
+			<inertia ixx="0.000003593654" ixy="0" ixz="0" iyy="0.000003455444" iyz="-0.000000074876" izz="0.000000165334"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia4.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia4.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
 	<!-- ### JOINTS ### -->
 
 	<joint name="shoulder_joint1" type="continuous">
@@ -167,6 +369,86 @@
 		<axis xyz="0 1 0"/>
 		<parent link="main_body"/>
 		<child link="link_shoulder4"/>
+		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<dynamics damping="0.0" friction="1.0"/> -->
+	</joint>
+
+	<joint name="limb_joint1" type="continuous">
+		
+		<origin xyz="-0.024 0.0305 0" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+		<parent link="link_shoulder1"/>
+		<child link="link_femur1"/>
+		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<dynamics damping="0.0" friction="1.0"/> -->
+	</joint>
+
+	<joint name="limb_joint2" type="continuous">
+		
+		<origin xyz="0.024 0.0305 0" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+		<parent link="link_shoulder2"/>
+		<child link="link_femur2"/>
+		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<dynamics damping="0.0" friction="1.0"/> -->
+	</joint>
+
+	<joint name="limb_joint3" type="continuous">
+		
+		<origin xyz="-0.024 -0.0305 0" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+		<parent link="link_shoulder3"/>
+		<child link="link_femur3"/>
+		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<dynamics damping="0.0" friction="1.0"/> -->
+	</joint>
+
+	<joint name="limb_joint4" type="continuous">
+		
+		<origin xyz="0.024 -0.0305 0" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+		<parent link="link_shoulder4"/>
+		<child link="link_femur4"/>
+		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<dynamics damping="0.0" friction="1.0"/> -->
+	</joint>
+
+	<joint name="knee_joint1" type="continuous">
+		
+		<origin xyz="0.005 0 -0.055" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+		<parent link="link_femur1"/>
+		<child link="link_tibia1"/>
+		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<dynamics damping="0.0" friction="1.0"/> -->
+	</joint>
+
+	<joint name="knee_joint2" type="continuous">
+		
+		<origin xyz="-0.005 0 -0.055" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+		<parent link="link_femur2"/>
+		<child link="link_tibia2"/>
+		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<dynamics damping="0.0" friction="1.0"/> -->
+	</joint>
+
+	<joint name="knee_joint3" type="continuous">
+		
+		<origin xyz="0.005 0 -0.055" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+		<parent link="link_femur3"/>
+		<child link="link_tibia3"/>
+		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<dynamics damping="0.0" friction="1.0"/> -->
+	</joint>
+
+	<joint name="knee_joint4" type="continuous">
+		
+		<origin xyz="-0.005 0 -0.055" rpy="0 0 0"/>
+		<axis xyz="1 0 0"/>
+		<parent link="link_femur4"/>
+		<child link="link_tibia4"/>
 		<!-- <limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
 		<dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
