@@ -1,7 +1,31 @@
 <?xml version="1.0" ?>
-<robot name="dreamwalker" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="dreamwalker_dummy" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-	
+	<link name="support_element">
+		
+		<inertial>
+			<mass value="0.8"/>
+			<origin xyz="0 0 0.082" rpy="0 0 0"/>
+			<inertia ixx="0.002858" ixy="0" ixz="0" iyy="0.002726" iyz="0" izz="0.0006479"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.1 0.14 0.19"/>
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/support_test_element.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+
 	<!--### BODY ### -->
 
 	<link name="main_body">
@@ -25,8 +49,8 @@
 				<mesh filename="package://dreamwalker_description/meshes/main_body.stl" scale="0.001 0.001 0.001" />
 			</geometry>
 			<material name="Cyan">
-  14        <color rgba="0 1.0 1.0 1.0"/>
-  15      </material>
+            	<color rgba="0 1.0 1.0 1.0"/>
+          	</material>
 		</visual>
 
 	</link>
@@ -439,6 +463,14 @@
 
 
 	<!-- ### JOINTS ### -->
+
+	<joint name="dummy_joint" type="fixed">
+		
+		<origin xyz="0 0 0.19" rpy="0 0 0"/>
+		<parent link="support_element"/>
+		<child link="main_body"/>
+	</joint>
+
 
 	<joint name="shoulder_joint1" type="revolute">
 		
