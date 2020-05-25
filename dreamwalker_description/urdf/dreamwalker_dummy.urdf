@@ -480,7 +480,7 @@
 		<parent link="main_body"/>
 		<child link="link_shoulder1"/>
 		<limit effort="30" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
-		<dynamics damping="0.7" friction="0.1"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="shoulder_joint2" type="revolute">
@@ -490,7 +490,7 @@
 		<parent link="main_body"/>
 		<child link="link_shoulder2"/>
 		<limit effort="30" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="shoulder_joint3" type="revolute">
@@ -500,7 +500,7 @@
 		<parent link="main_body"/>
 		<child link="link_shoulder3"/>
 		<limit effort="30" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!--<dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="shoulder_joint4" type="revolute">
@@ -510,7 +510,7 @@
 		<parent link="main_body"/>
 		<child link="link_shoulder4"/>
 		<limit effort="30" velocity="1.0" lower="-0.52359" upper="0.52359" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!--<dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="limb_joint1" type="revolute">
@@ -595,14 +595,14 @@
 
 	<joint name="foot_joint1" type="fixed">
 		
-		<origin xyz="-0.0025 0 -0.065" rpy="-0.5235987755983 0 0"/>
+		<origin xyz="-0.0025 0 -0.065" rpy="-0.52359 0 0"/>
 		<parent link="link_tibia1"/>
 		<child link="link_foot1"/>
 	</joint>
 
 	<joint name="foot_joint2" type="fixed">
 		
-		<origin xyz="0.0025 0 -0.065" rpy="-0.5235987755983 0 0"/>
+		<origin xyz="0.0025 0 -0.065" rpy="-0.52359 0 0"/>
 		<parent link="link_tibia2"/>
 		<child link="link_foot2"/>
 	</joint>
@@ -610,7 +610,7 @@
 
 	<joint name="foot_joint3" type="fixed">
 		
-		<origin xyz="-0.0025 0 -0.065" rpy="0.5235987755983 0 0"/>
+		<origin xyz="-0.0025 0 -0.065" rpy="0.52359 0 0"/>
 		<parent link="link_tibia3"/>
 		<child link="link_foot3"/>
 	</joint>
@@ -618,7 +618,7 @@
 
 	<joint name="foot_joint4" type="fixed">
 		
-		<origin xyz="0.0025 0 -0.065" rpy="0.5235987755983 0 0"/>
+		<origin xyz="0.0025 0 -0.065" rpy="0.52359 0 0"/>
 		<parent link="link_tibia4"/>
 		<child link="link_foot4"/>
 	</joint>
