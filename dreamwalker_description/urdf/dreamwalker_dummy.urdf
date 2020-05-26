@@ -67,9 +67,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="-0.007 0.0225 0" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.1 0.01 0.01"/>
+				<box size="0.034 0.045 0.0175"/>
 			</geometry>
 		</collision>
 
@@ -92,9 +92,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="0.007 0.0225 0" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.034 0.045 0.0175"/>
 			</geometry>
 		</collision>
 
@@ -117,9 +117,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="-0.007 -0.0225 0" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.034 0.045 0.0175"/>
 			</geometry>
 		</collision>
 
@@ -142,9 +142,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="0.007 -0.0225 0" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.034 0.045 0.0175"/>
 			</geometry>
 		</collision>
 
@@ -168,9 +168,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="-0.00725 0 -0.0275" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.014 0.02 0.085"/>
 			</geometry>
 		</collision>
 
@@ -179,6 +179,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur1.stl" scale="0.001 0.001 0.001" />
 			</geometry>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -193,9 +194,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="0.00725 0 -0.0275" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.014 0.02 0.085"/>
 			</geometry>
 		</collision>
 
@@ -204,6 +205,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur2.stl" scale="0.001 0.001 0.001" />
 			</geometry>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -218,9 +220,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="-0.00725 0 -0.0275" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.014 0.02 0.085"/>
 			</geometry>
 		</collision>
 
@@ -229,6 +231,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur3.stl" scale="0.001 0.001 0.001" />
 			</geometry>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -243,9 +246,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="0.00725 0 -0.0275" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.014 0.02 0.085"/>
 			</geometry>
 		</collision>
 
@@ -254,6 +257,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur4.stl" scale="0.001 0.001 0.001" />
 			</geometry>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -268,9 +272,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="-0.0025 0 -0.028" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.005 0.015 0.075"/>
 			</geometry>
 		</collision>
 
@@ -293,9 +297,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="0.0025 0 -0.028" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.005 0.015 0.075"/>
 			</geometry>
 		</collision>
 
@@ -318,9 +322,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="-0.0025 0 -0.028" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.005 0.015 0.075"/>
 			</geometry>
 		</collision>
 
@@ -343,9 +347,9 @@
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<origin xyz="0.0025 0 -0.028" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.01 0.01 0.01"/>
+				<box size="0.005 0.015 0.075"/>
 			</geometry>
 		</collision>
 
@@ -372,7 +376,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100" mu2="100" k_p="1000000.0"  k_d="100.0" />
+			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
@@ -380,6 +384,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -398,7 +403,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100" mu2="100" k_p="1000000.0"  k_d="100.0" />
+			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
@@ -406,6 +411,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -424,7 +430,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100" mu2="100" k_p="1000000.0"  k_d="100.0" />
+			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
@@ -432,6 +438,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -450,7 +457,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100" mu2="100" k_p="1000000.0"  k_d="100.0" />
+			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
@@ -458,6 +465,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -520,7 +528,7 @@
 		<parent link="link_shoulder1"/>
 		<child link="link_femur1"/>
 		<limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="limb_joint2" type="revolute">
@@ -530,7 +538,7 @@
 		<parent link="link_shoulder2"/>
 		<child link="link_femur2"/>
 		<limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="limb_joint3" type="revolute">
@@ -540,7 +548,7 @@
 		<parent link="link_shoulder3"/>
 		<child link="link_femur3"/>
 		<limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="limb_joint4" type="revolute">
@@ -550,7 +558,7 @@
 		<parent link="link_shoulder4"/>
 		<child link="link_femur4"/>
 		<limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="knee_joint1" type="revolute">
@@ -560,7 +568,7 @@
 		<parent link="link_femur1"/>
 		<child link="link_tibia1"/>
 		<limit effort="30" velocity="1.0" lower="0" upper="2.09439" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="knee_joint2" type="revolute">
@@ -570,7 +578,7 @@
 		<parent link="link_femur2"/>
 		<child link="link_tibia2"/>
 		<limit effort="30" velocity="1.0" lower="0" upper="2.09439" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="knee_joint3" type="revolute">
@@ -580,7 +588,7 @@
 		<parent link="link_femur3"/>
 		<child link="link_tibia3"/>
 		<limit effort="30" velocity="1.0" lower="-2.09439" upper="0" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="knee_joint4" type="revolute">
@@ -590,7 +598,7 @@
 		<parent link="link_femur4"/>
 		<child link="link_tibia4"/>
 		<limit effort="30" velocity="1.0" lower="-2.09439" upper="0" />
-		<dynamics damping="0.0" friction="1.0"/>
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="foot_joint1" type="fixed">
@@ -624,14 +632,208 @@
 	</joint>
 
 	<!-- ### GAZEBO ### -->
-	<!--
+
 	<gazebo>
   		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    		<robotNamespace>/roboter</robotNamespace>
+    		<robotNamespace>/dreamwalker</robotNamespace>
   		</plugin>
 	</gazebo>
-										-->
+										
 	<!-- ### TRANSMISSIONS -->
+
+	<transmission name="tran_sh1">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="shoulder_joint1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="shoulder1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_sh2">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="shoulder_joint2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="shoulder2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_sh3">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="shoulder_joint3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="shoulder3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_sh4">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="shoulder_joint4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="shoulder4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_lim1">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="limb_joint1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="arm1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_lim2">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="limb_joint2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="arm2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_lim3">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="limb_joint3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="arm3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_lim4">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="limb_joint4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="arm4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_knee1">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="knee_joint1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="forearm1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_knee2">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="knee_joint2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="forearm2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_knee3">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="knee_joint3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="forearm3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_knee4">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="knee_joint4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="forearm4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+	<!-- COLORS AND FRICTION PARAMETERS -->
 
 	<gazebo reference="main_body">
     	<material>Gazebo/Grey</material>

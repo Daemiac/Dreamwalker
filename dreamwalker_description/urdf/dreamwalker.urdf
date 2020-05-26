@@ -351,7 +351,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<!-- <contact_coefficient mu="100" mu2="100" k_p="100.0"  k_d="100.0" /> -->
+			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
@@ -378,7 +378,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<!-- <contact_coefficient mu="100" mu2="100" k_p="100.0"  k_d="100.0" /> -->
+			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
@@ -405,7 +405,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<!-- <contact_coefficient mu="100" mu2="100" k_p="100.0"  k_d="100.0" /> -->
+			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
@@ -432,7 +432,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<!-- <contact_coefficient mu="100" mu2="100" k_p="100.0"  k_d="100.0" /> -->
+			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
@@ -599,17 +599,218 @@
 	</joint>
 
 	<!-- ### GAZEBO ### -->
-	<!--
+
 	<gazebo>
   		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    		<robotNamespace>/roboter</robotNamespace>
+    		<robotNamespace>/dreamwalker</robotNamespace>
   		</plugin>
 	</gazebo>
-										-->
+										
 	<!-- ### TRANSMISSIONS -->
+
+	<transmission name="tran_sh1">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="shoulder_joint1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="shoulder1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_sh2">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="shoulder_joint2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="shoulder2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_sh3">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="shoulder_joint3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="shoulder3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_sh4">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="shoulder_joint4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="shoulder4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_lim1">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="limb_joint1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="arm1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_lim2">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="limb_joint2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="arm2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_lim3">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="limb_joint3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="arm3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_lim4">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="limb_joint4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="arm4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_knee1">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="knee_joint1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="forearm1">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_knee2">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="knee_joint2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="forearm2">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_knee3">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="knee_joint3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="forearm3">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+  	<transmission name="tran_knee4">
+    	
+    	<type>transmission_interface/SimpleTransmission</type>
+    	
+    	<joint name="knee_joint4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+    	</joint>
+    	
+    	<actuator name="forearm4">
+      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<mechanicalReduction>1</mechanicalReduction>
+    	</actuator>
+
+  	</transmission>
+
+
+	<!-- COLORS AND FRICTION PARAMETERS -->
 
 	<gazebo reference="main_body">
     	<material>Gazebo/Grey</material>
+    	<mu1>0.5</mu1>
+  		<mu2>0.7</mu2>
+  	</gazebo>
+
+  	<gazebo reference="link_tibia1">
+  		<mu1>100.0</mu1>
+  		<mu2>100.0</mu2>
   	</gazebo>
 
   	<gazebo reference="link_foot1">
