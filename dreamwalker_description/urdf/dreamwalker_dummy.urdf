@@ -1,6 +1,17 @@
 <?xml version="1.0" ?>
 <robot name="dreamwalker_dummy" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+
+	<!-- WORLD LINK -->
+	<link name="world"/>
+
+  	<joint name="fixed" type="fixed">
+    	<parent link="world"/>
+    	<child link="support_element"/>
+  	</joint>
+
+  	<!-- SUPPORT ELEMENT -->
+
 	<link name="support_element">
 		
 		<inertial>
@@ -14,20 +25,19 @@
 			<geometry>
 				<box size="0.06 0.14 0.19"/>
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="1000000.0"  k_d="100.0" />
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/support_test_element.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/support_test_element.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 		</visual>
 
 	</link>
 
 
-	<!--### BODY ### -->
+	<!--### ROBOT BODY ### -->
 
 	<link name="main_body">
 		
@@ -281,7 +291,7 @@
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_tibia1.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_tibia1.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 		</visual>
 
@@ -374,15 +384,15 @@
 		<collision name="collision_base">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
+			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<material name="black"/>
 		</visual>
@@ -401,15 +411,15 @@
 		<collision name="collision_base">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
+			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<material name="black"/>
 		</visual>
@@ -428,15 +438,15 @@
 		<collision name="collision_base">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
+			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<material name="black"/>
 		</visual>
@@ -455,15 +465,15 @@
 		<collision name="collision_base">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
+			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<material name="black"/>
 		</visual>
@@ -646,7 +656,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="shoulder_joint1">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="shoulder1">
@@ -662,7 +672,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="shoulder_joint2">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="shoulder2">
@@ -678,7 +688,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="shoulder_joint3">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="shoulder3">
@@ -694,7 +704,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="shoulder_joint4">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="shoulder4">
@@ -710,7 +720,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="limb_joint1">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="arm1">
@@ -726,7 +736,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="limb_joint2">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="arm2">
@@ -742,7 +752,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="limb_joint3">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="arm3">
@@ -758,7 +768,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="limb_joint4">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="arm4">
@@ -774,7 +784,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="knee_joint1">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="forearm1">
@@ -790,7 +800,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="knee_joint2">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="forearm2">
@@ -806,7 +816,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="knee_joint3">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="forearm3">
@@ -822,7 +832,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="knee_joint4">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="forearm4">
@@ -837,6 +847,18 @@
 
 	<gazebo reference="main_body">
     	<material>Gazebo/Grey</material>
+  	</gazebo>
+
+  	<gazebo reference="link_foot1">
+    	<!-- using sdf block syntax directly in extension -->
+    	<collision>
+      		<friction>      
+        		<ode>      
+          			<mu>1.5</mu>
+          			<mu2>1.5</mu2>
+        		</ode>      
+      		</friction>      
+    	</collision>
   	</gazebo>
 
   	<gazebo reference="link_foot1">

@@ -1,7 +1,15 @@
 <?xml version="1.0" ?>
 <robot name="dreamwalker" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-	
+	<!-- DUMMY LINK -->
+	<link name="dummy">	
+	</link>
+
+	<joint name="dummy_joint" type="fixed">
+    	<parent link="dummy"/>
+    	<child link="main_body"/>
+    </joint>
+
 	<!--### BODY ### -->
 
 	<link name="main_body">
@@ -613,7 +621,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="shoulder_joint1">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="shoulder1">
@@ -629,7 +637,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="shoulder_joint2">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="shoulder2">
@@ -645,7 +653,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="shoulder_joint3">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="shoulder3">
@@ -661,7 +669,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="shoulder_joint4">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="shoulder4">
@@ -677,7 +685,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="limb_joint1">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="arm1">
@@ -693,7 +701,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="limb_joint2">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="arm2">
@@ -709,7 +717,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="limb_joint3">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="arm3">
@@ -725,7 +733,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="limb_joint4">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="arm4">
@@ -741,7 +749,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="knee_joint1">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="forearm1">
@@ -757,7 +765,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="knee_joint2">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="forearm2">
@@ -773,7 +781,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="knee_joint3">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="forearm3">
@@ -789,7 +797,7 @@
     	<type>transmission_interface/SimpleTransmission</type>
     	
     	<joint name="knee_joint4">
-      		<hardwareInterface>EffortJointInterface</hardwareInterface>
+      		<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     	</joint>
     	
     	<actuator name="forearm4">
@@ -805,7 +813,7 @@
 	<gazebo reference="main_body">
     	<material>Gazebo/Grey</material>
     	<mu1>0.5</mu1>
-  	<mu2>0.7</mu2>
+  		<mu2>0.7</mu2>
   	</gazebo>
 
   	<gazebo reference="link_tibia1">
