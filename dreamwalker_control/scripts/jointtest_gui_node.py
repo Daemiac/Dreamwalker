@@ -30,10 +30,11 @@ except AttributeError:
 
 class Ui_MainWindow(object):
 
+    #publishers
     chosenLeg_pub = rospy.Publisher('chosenLeg', String, queue_size=10)
-    shoulder_joint_pub = rospy.Publisher('shoulder_value', Float64, queue_size=10)
-    arm_joint_pub = rospy.Publisher('limb_value', Float64, queue_size=10)
-    knee_joint_pub = rospy.Publisher('knee_value', Float64, queue_size=10)
+    shoulder_joint_pub = rospy.Publisher('shoulder_value', String, queue_size=10)
+    arm_joint_pub = rospy.Publisher('limb_value', String, queue_size=10)
+    knee_joint_pub = rospy.Publisher('knee_value', String, queue_size=10)
     reset_pub = rospy.Publisher("reset_position", String, queue_size=10)
 
 
@@ -138,9 +139,9 @@ class Ui_MainWindow(object):
             self.chosenLeg_pub.publish("BR")
 
     def readValues(self):
-        self.value1 = float(str(self.lineEdit.text()))
-        self.value2 = float(str(self.lineEdit_2.text()))
-        self.value3 = float(str(self.lineEdit_3.text()))
+        self.value1 = str(self.lineEdit.text())
+        self.value2 = str(self.lineEdit_2.text())
+        self.value3 = str(self.lineEdit_3.text())
 
     def publishChanges(self):
         print self.value1, self.value2, self.value3
