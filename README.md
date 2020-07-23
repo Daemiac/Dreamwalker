@@ -1,2 +1,2 @@
 # Dreamwalker
-Projekt polegający na zaprojektowaniu i zasymulowaniu czworonożnego robota kroczącego.
+Projekt polegający na zaprojektowaniu i symulacji czworonożnego robota kroczącego.
