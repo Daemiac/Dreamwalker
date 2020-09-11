@@ -22,7 +22,7 @@
 
  <!-- spawning the robot inside the simulation -->
 
- <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find dreamwalker_description)/urdf/dreamwalker_dummy.xacro'"/>
+ <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find dreamwalker_description)/urdf/dreamwalker_dummy.urdf'"/>
 
 	<!-- initial position of the robot -->
 	<arg name="x" default="0"/>
@@ -59,10 +59,6 @@
     <remap from="/joint_states" to="/dreamwalker/joint_states" />
   </node>
 
-<!--  <node pkg="dreamwalker_control" type="jointtest_gui_node.py" name="GUI_node" output="screen">
-  </node>
-
-  <node pkg="dreamwalker_control" type="joint_test_node.py" name="control_node" output="screen">
-  </node> -->
+  
 
 </launch>

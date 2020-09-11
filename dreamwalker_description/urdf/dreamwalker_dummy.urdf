@@ -1,17 +1,47 @@
 <?xml version="1.0" ?>
-<robot name="dreamwalker" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="dreamwalker_dummy" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-	<xacro:include filename="$(find dreamwalker_description)/urdf/dreamwalker.gazebo" />
-  	<xacro:include filename="$(find dreamwalker_description)/urdf/materials.xacro" />
 
 	<!-- WORLD LINK -->
 	<link name="world"/>
 
-  	<joint name="world_joint" type="floating">
+  	<joint name="fixed" type="fixed">
     	<parent link="world"/>
-    	<child link="main_body"/>
+    	<child link="support_element"/>
   	</joint>
 
+  	<!-- SUPPORT ELEMENT -->
+
+	<link name="support_element">
+		
+		<inertial>
+			<mass value="0.8"/>
+			<origin xyz="0 0 0.082" rpy="0 0 0"/>
+			<inertia ixx="0.002858" ixy="0" ixz="0" iyy="0.002726" iyz="0" izz="0.0006479"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0 0.095" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.06 0.14 0.19"/>
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/support_test_element.dae" scale="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+
+	</link>
+
+	<joint name="dummy_joint" type="fixed">
+		
+		<origin xyz="0 0 0.19" rpy="0 0 0"/>
+		<parent link="support_element"/>
+		<child link="main_body"/>
+	</joint>
 
 
 	<!--### ROBOT BODY ### -->
@@ -53,7 +83,7 @@
 			<inertia ixx="0.000003218011" ixy="0.000000199995" ixz="0" iyy="0.000001946476" iyz="0" izz="0.000004027678"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="-0.007 0.0225 0" rpy="0 0 0"/>
 			<geometry>
 				<box size="0.034 0.045 0.0175"/>
@@ -103,7 +133,7 @@
 			<inertia ixx="0.000003218011" ixy="-0.000000199995" ixz="0" iyy="0.000001946476" iyz="0" izz="0.000004027678"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="-0.007 -0.0225 0" rpy="0 0 0"/>
 			<geometry>
 				<box size="0.034 0.045 0.0175"/>
@@ -128,7 +158,7 @@
 			<inertia ixx="0.000003218011" ixy="0.000000199995" ixz="0" iyy="0.000001946476" iyz="0" izz="0.000004027678"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="0.007 -0.0225 0" rpy="0 0 0"/>
 			<geometry>
 				<box size="0.034 0.045 0.0175"/>
@@ -166,7 +196,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur1.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="red"/>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -192,7 +222,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur2.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="red"/>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -218,7 +248,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur3.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="red"/>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -244,7 +274,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur4.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="red"/>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -358,10 +388,10 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
@@ -385,10 +415,10 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
@@ -412,10 +442,10 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
@@ -439,10 +469,10 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
@@ -467,7 +497,8 @@
 		<axis xyz="0 1 0"/>
 		<parent link="main_body"/>
 		<child link="link_shoulder1"/>
-		<limit effort="2.5" velocity="1.0" lower="-0.5235987755983" upper="0.5235987755983" />
+		<limit effort="30" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="shoulder_joint2" type="revolute">
@@ -476,7 +507,7 @@
 		<axis xyz="0 1 0"/>
 		<parent link="main_body"/>
 		<child link="link_shoulder2"/>
-		<limit effort="2.5" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
+		<limit effort="30" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -486,7 +517,7 @@
 		<axis xyz="0 1 0"/>
 		<parent link="main_body"/>
 		<child link="link_shoulder3"/>
-		<limit effort="2.5" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
+		<limit effort="30" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
 		<!--<dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -496,7 +527,7 @@
 		<axis xyz="0 1 0"/>
 		<parent link="main_body"/>
 		<child link="link_shoulder4"/>
-		<limit effort="2.5" velocity="1.0" lower="-0.52359" upper="0.52359" />
+		<limit effort="30" velocity="1.0" lower="-0.52359" upper="0.52359" />
 		<!--<dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -640,12 +671,11 @@
 
 	</link>
 
-	<joint name="m_sensor_joint" type="revolute">
+	<joint name="m_sensor_joint" type="fixed">
 		
 		<origin xyz="0 0.095 0.005" rpy="0 0 0"/>
 		<parent link="main_body"/>
 		<child link="link_m_sensor"/>
-		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
 
@@ -674,12 +704,11 @@
 
 	</link>
 
-	<joint name="b_sensor_joint" type="revolute">
+	<joint name="b_sensor_joint" type="fixed">
 		
 		<origin xyz="0 -0.095 0.005" rpy="0 0 3.141592"/>
 		<parent link="main_body"/>
 		<child link="link_b_sensor"/>
-		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
 
@@ -708,12 +737,11 @@
 
 	</link>
 
-	<joint name="l_sensor_joint" type="revolute">
+	<joint name="l_sensor_joint" type="fixed">
 		
 		<origin xyz="-0.025 0.090 0.034" rpy="0 0 0.785398163"/>
 		<parent link="main_body"/>
 		<child link="link_l_sensor"/>
-		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
 
@@ -742,14 +770,20 @@
 
 	</link>
 
-	<joint name="r_sensor_joint" type="revolute">
+	<joint name="r_sensor_joint" type="fixed">
 		
 		<origin xyz="0.025 0.090 0.034" rpy="0 0 -0.785398163"/>
 		<parent link="main_body"/>
 		<child link="link_r_sensor"/>
-		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
+	<!-- ### GAZEBO ### -->
+
+	<gazebo>
+  		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    		<robotNamespace>/dreamwalker</robotNamespace>
+  		</plugin>
+	</gazebo>
 										
 	<!-- ### TRANSMISSIONS -->
 
@@ -944,5 +978,39 @@
 
   	</transmission>
 
+
+	<!-- COLORS AND FRICTION PARAMETERS -->
+
+	<gazebo reference="main_body">
+    	<material>Gazebo/Grey</material>
+  	</gazebo>
+
+  	<gazebo reference="link_foot1">
+    	<!-- using sdf block syntax directly in extension -->
+    	<collision>
+      		<friction>      
+        		<ode>      
+          			<mu>1.5</mu>
+          			<mu2>1.5</mu2>
+        		</ode>      
+      		</friction>      
+    	</collision>
+  	</gazebo>
+
+  	<gazebo reference="link_foot1">
+    	<material>Gazebo/Black</material>
+  	</gazebo>
+
+  	<gazebo reference="link_foot2">
+    	<material>Gazebo/Black</material>
+  	</gazebo>
+
+  	<gazebo reference="link_foot3">
+    	<material>Gazebo/Black</material>
+  	</gazebo>
+
+  	<gazebo reference="link_foot4">
+    	<material>Gazebo/Black</material>
+  	</gazebo>
 
 </robot>
