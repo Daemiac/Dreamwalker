@@ -1,14 +1,6 @@
 <?xml version="1.0" ?>
 <robot name="dreamwalker" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-	<!-- DUMMY LINK -->
-	<link name="dummy">	
-	</link>
-
-	<joint name="dummy_joint" type="fixed">
-    	<parent link="dummy"/>
-    	<child link="main_body"/>
-    </joint>
 
 	<!--### BODY ### -->
 
@@ -162,7 +154,6 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur1.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="black"/>
 		</visual>
 
 	</link>
@@ -188,7 +179,6 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur2.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="black"/>
 		</visual>
 
 	</link>
@@ -214,7 +204,6 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur3.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="black"/>
 		</visual>
 
 	</link>
@@ -240,7 +229,6 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur4.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="black"/>
 		</visual>
 
 	</link>
@@ -249,22 +237,22 @@
 	<link name="link_tibia1">
 		
 		<inertial>
-			<mass value="0.00651"/>
-			<origin xyz="-0.0025 0.000876 -0.027677" rpy="0 0 0"/>
-			<inertia ixx="0.000003593654" ixy="0" ixz="0" iyy="0.000003455444" iyz="0.000000074876" izz="0.000000165334"/>
+			<mass value="0.00730"/>
+			<origin xyz="-0.0025 0.0009 -0.032102" rpy="0 0 0"/>
+			<inertia ixx="0.0000050464" ixy="0" ixz="0" iyy="0.000004893134" iyz="0.00000009901" izz="0.00000018368"/>
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="-0.0025 0 -0.028" rpy="0 0 0"/>
+			<origin xyz="-0.0025 0 -0.033" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.005 0.015 0.075"/>
+				<box size="0.005 0.015 0.085"/>
 			</geometry>
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_tibia1.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_forearm1.stl" scale="0.001 0.001 0.001" />
 			</geometry>
 		</visual>
 
@@ -274,22 +262,22 @@
 	<link name="link_tibia2">
 		
 		<inertial>
-			<mass value="0.00651"/>
-			<origin xyz="0.0025 0.000876 -0.027677" rpy="0 0 0"/>
-			<inertia ixx="0.000003593654" ixy="0" ixz="0" iyy="0.000003455444" iyz="0.000000074876" izz="0.000000165334"/>
+			<mass value="0.00730"/>
+			<origin xyz="0.0025 0.0009 -0.032102" rpy="0 0 0"/>
+			<inertia ixx="0.0000050464" ixy="0" ixz="0" iyy="0.000004893134" iyz="0.00000009901" izz="0.00000018368"/>
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0.0025 0 -0.028" rpy="0 0 0"/>
+			<origin xyz="0.0025 0 -0.033" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.005 0.015 0.075"/>
+				<box size="0.005 0.015 0.085"/>
 			</geometry>
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_tibia2.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_forearm2.stl" scale="0.001 0.001 0.001" />
 			</geometry>
 		</visual>
 
@@ -299,22 +287,22 @@
 	<link name="link_tibia3">
 		
 		<inertial>
-			<mass value="0.00651"/>
-			<origin xyz="-0.0025 -0.000876 -0.027677" rpy="0 0 0"/>
-			<inertia ixx="0.000003593654" ixy="0" ixz="0" iyy="0.000003455444" iyz="-0.000000074876" izz="0.000000165334"/>
+			<mass value="0.00730"/>
+			<origin xyz="-0.0025 0.0009 -0.032102" rpy="0 0 0"/>
+			<inertia ixx="0.0000050464" ixy="0" ixz="0" iyy="0.000004893134" iyz="0.00000009901" izz="0.00000018368"/>
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="-0.0025 0 -0.028" rpy="0 0 0"/>
+			<origin xyz="-0.0025 0 -0.033" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.005 0.015 0.075"/>
+				<box size="0.005 0.015 0.085"/>
 			</geometry>
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_tibia3.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_forearm1.stl" scale="0.001 0.001 0.001" />
 			</geometry>
 		</visual>
 
@@ -324,22 +312,22 @@
 	<link name="link_tibia4">
 		
 		<inertial>
-			<mass value="0.00651"/>
-			<origin xyz="0.0025 -0.000876 -0.027677" rpy="0 0 0"/>
-			<inertia ixx="0.000003593654" ixy="0" ixz="0" iyy="0.000003455444" iyz="-0.000000074876" izz="0.000000165334"/>
+			<mass value="0.00730"/>
+			<origin xyz="0.0025 0.0009 -0.032102" rpy="0 0 0"/>
+			<inertia ixx="0.0000050464" ixy="0" ixz="0" iyy="0.000004893134" iyz="0.00000009901" izz="0.00000018368"/>
 		</inertial>
 
 		<collision name="collision_base">
-			<origin xyz="0.0025 0 -0.028" rpy="0 0 0"/>
+			<origin xyz="0.0025 0 -0.033" rpy="0 0 0"/>
 			<geometry>
-				<box size="0.005 0.015 0.075"/>
+				<box size="0.005 0.015 0.085"/>
 			</geometry>
 		</collision>
 
 		<visual>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_tibia4.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_forearm2.stl" scale="0.001 0.001 0.001" />
 			</geometry>
 		</visual>
 
@@ -354,12 +342,12 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision name="collision_base">
+		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
+			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
 
 		<visual>
@@ -381,12 +369,12 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision name="collision_base">
+		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
+			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
 
 		<visual>
@@ -408,12 +396,12 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision name="collision_base">
+		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
+			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
 
 		<visual>
@@ -435,12 +423,12 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision name="collision_base">
+		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" />
+			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
 
 		<visual>
@@ -455,6 +443,7 @@
 
 
 	<!-- ### JOINTS ### -->
+
 
 	<joint name="shoulder_joint1" type="revolute">
 		
@@ -562,7 +551,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_femur3"/>
 		<child link="link_tibia3"/>
-		<limit effort="30" velocity="1.0" lower="-2.09439" upper="0" />
+		<limit effort="30" velocity="1.0" lower="0" upper="2.09439" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -572,20 +561,20 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_femur4"/>
 		<child link="link_tibia4"/>
-		<limit effort="30" velocity="1.0" lower="-2.09439" upper="0" />
+		<limit effort="30" velocity="1.0" lower="0" upper="2.09439" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="foot_joint1" type="fixed">
 		
-		<origin xyz="-0.0025 0 -0.065" rpy="-0.52359 0 0"/>
+		<origin xyz="-0.0025 0 -0.075" rpy="-0.52359 0 0"/>
 		<parent link="link_tibia1"/>
 		<child link="link_foot1"/>
 	</joint>
 
 	<joint name="foot_joint2" type="fixed">
 		
-		<origin xyz="0.0025 0 -0.065" rpy="-0.52359 0 0"/>
+		<origin xyz="0.0025 0 -0.075" rpy="-0.52359 0 0"/>
 		<parent link="link_tibia2"/>
 		<child link="link_foot2"/>
 	</joint>
@@ -593,7 +582,7 @@
 
 	<joint name="foot_joint3" type="fixed">
 		
-		<origin xyz="-0.0025 0 -0.065" rpy="0.52359 0 0"/>
+		<origin xyz="-0.0025 0 -0.075" rpy="-0.52359 0 0"/>
 		<parent link="link_tibia3"/>
 		<child link="link_foot3"/>
 	</joint>
@@ -601,9 +590,157 @@
 
 	<joint name="foot_joint4" type="fixed">
 		
-		<origin xyz="0.0025 0 -0.065" rpy="0.52359 0 0"/>
+		<origin xyz="0.0025 0 -0.075" rpy="-0.52359 0 0"/>
 		<parent link="link_tibia4"/>
 		<child link="link_foot4"/>
+	</joint>
+
+
+
+	<!-- ### SENSORS ### -->
+
+
+
+	<link name="link_m_sensor">
+		
+		<inertial>
+			<mass value="0.0102"/>
+			<origin xyz="0 0.01591 0.011" rpy="0 0 0"/>
+			<inertia ixx="0.000000566328" ixy="0" ixz="0" iyy="0.000002259218" iyz="-0.0000000944" izz="0.000002156532"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0.015 0.01125" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.050 0.0293 0.0225"/>
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_fb_sensor.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+			<material name="orange">
+    			<color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+  			</material>
+		</visual>
+
+	</link>
+
+	<joint name="m_sensor_joint" type="fixed">
+		
+		<origin xyz="0 0.095 0.005" rpy="0 0 0"/>
+		<parent link="main_body"/>
+		<child link="link_m_sensor"/>
+	</joint>
+
+
+
+	<link name="link_b_sensor">
+		
+		<inertial>
+			<mass value="0.0102"/>
+			<origin xyz="0 0.01591 0.011" rpy="0 0 0"/>
+			<inertia ixx="0.000000566328" ixy="0" ixz="0" iyy="0.000002259218" iyz="-0.0000000944" izz="0.000002156532"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0.015 0.01125" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.050 0.0293 0.0225"/>
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_fb_sensor.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+			<material name="orange">
+    			<color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+  			</material>
+		</visual>
+
+	</link>
+
+	<joint name="b_sensor_joint" type="fixed">
+		
+		<origin xyz="0 -0.095 0.005" rpy="0 0 3.141592"/>
+		<parent link="main_body"/>
+		<child link="link_b_sensor"/>
+	</joint>
+
+
+
+	<link name="link_l_sensor">
+		
+		<inertial>
+			<mass value="0.00983"/>
+			<origin xyz="0 0.01336 0.02495" rpy="0 0 0"/>
+			<inertia ixx="0.000002392374" ixy="0" ixz="0" iyy="0.000002455416" iyz="-0.000000093261" izz="0.000000406513"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0.015 0.025" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.020 0.015 0.052"/>
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_rl_sensor.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+			<material name="orange">
+    			<color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+  			</material>
+		</visual>
+
+	</link>
+
+	<joint name="l_sensor_joint" type="fixed">
+		
+		<origin xyz="-0.025 0.090 0.034" rpy="0 0 0.785398163"/>
+		<parent link="main_body"/>
+		<child link="link_l_sensor"/>
+	</joint>
+
+
+
+	<link name="link_r_sensor">
+		
+		<inertial>
+			<mass value="0.00983"/>
+			<origin xyz="0 0.01336 0.02495" rpy="0 0 0"/>
+			<inertia ixx="0.000002392374" ixy="0" ixz="0" iyy="0.000002455416" iyz="-0.000000093261" izz="0.000000406513"/>
+		</inertial>
+
+		<collision name="collision_base">
+			<origin xyz="0 0.015 0.025" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.020 0.015 0.052"/>
+			</geometry>
+		</collision>
+
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<mesh filename="package://dreamwalker_description/meshes/link_rl_sensor.stl" scale="0.001 0.001 0.001" />
+			</geometry>
+			<material name="orange">
+    			<color rgba="${255/255} ${108/255} ${10/255} 1.0"/>
+  			</material>
+		</visual>
+
+	</link>
+
+	<joint name="r_sensor_joint" type="fixed">
+		
+		<origin xyz="0.025 0.090 0.034" rpy="0 0 -0.785398163"/>
+		<parent link="main_body"/>
+		<child link="link_r_sensor"/>
 	</joint>
 
 	<!-- ### GAZEBO ### -->
@@ -812,28 +949,36 @@
 
 	<gazebo reference="main_body">
     	<material>Gazebo/Grey</material>
-    	<mu1>0.5</mu1>
-  		<mu2>0.7</mu2>
-  	</gazebo>
-
-  	<gazebo reference="link_tibia1">
-  		<mu1>100.0</mu1>
-  		<mu2>100.0</mu2>
   	</gazebo>
 
   	<gazebo reference="link_foot1">
+      <!-- using sdf block syntax directly in extension -->
+  		<mu1>100</mu1>
+  		<mu2>100</mu2>
     	<material>Gazebo/Black</material>
+
   	</gazebo>
 
   	<gazebo reference="link_foot2">
+
+  		<mu1>100</mu1>
+  		<mu2>100</mu2>
     	<material>Gazebo/Black</material>
+
   	</gazebo>
 
   	<gazebo reference="link_foot3">
+
+  		<mu1>100</mu1>
+  		<mu2>100</mu2>
     	<material>Gazebo/Black</material>
+
   	</gazebo>
 
   	<gazebo reference="link_foot4">
+
+  		<mu1>100</mu1>
+  		<mu2>100</mu2>
     	<material>Gazebo/Black</material>
   	</gazebo>
 

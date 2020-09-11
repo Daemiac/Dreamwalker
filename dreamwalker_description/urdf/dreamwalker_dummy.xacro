@@ -1,6 +1,8 @@
 <?xml version="1.0" ?>
 <robot name="dreamwalker_dummy" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
+	<xacro:include filename="$(find dreamwalker_description)/urdf/dreamwalker.gazebo" />
+  	<xacro:include filename="$(find dreamwalker_description)/urdf/materials.xacro" />
 
 	<!-- WORLD LINK -->
 	<link name="world"/>
@@ -36,11 +38,12 @@
 
 	</link>
 
-	<joint name="dummy_joint" type="fixed">
+	<joint name="dummy_joint" type="revolute">
 		
 		<origin xyz="0 0 0.19" rpy="0 0 0"/>
 		<parent link="support_element"/>
 		<child link="main_body"/>
+		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
 
@@ -388,7 +391,7 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision name="collision_base">
+		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
@@ -415,7 +418,7 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision name="collision_base">
+		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
@@ -442,7 +445,7 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision name="collision_base">
+		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
@@ -469,7 +472,7 @@
 			<inertia ixx="0.000000043185" ixy="0" ixz="0" iyy="0.000000029326" iyz="-0.000000074876" izz="0.000000054089"/>
 		</inertial>
 
-		<collision name="collision_base">
+		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
@@ -671,11 +674,12 @@
 
 	</link>
 
-	<joint name="m_sensor_joint" type="fixed">
+	<joint name="m_sensor_joint" type="revolute">
 		
 		<origin xyz="0 0.095 0.005" rpy="0 0 0"/>
 		<parent link="main_body"/>
 		<child link="link_m_sensor"/>
+		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
 
@@ -704,11 +708,12 @@
 
 	</link>
 
-	<joint name="b_sensor_joint" type="fixed">
+	<joint name="b_sensor_joint" type="revolute">
 		
 		<origin xyz="0 -0.095 0.005" rpy="0 0 3.141592"/>
 		<parent link="main_body"/>
 		<child link="link_b_sensor"/>
+		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
 
@@ -737,11 +742,12 @@
 
 	</link>
 
-	<joint name="l_sensor_joint" type="fixed">
+	<joint name="l_sensor_joint" type="revolute">
 		
 		<origin xyz="-0.025 0.090 0.034" rpy="0 0 0.785398163"/>
 		<parent link="main_body"/>
 		<child link="link_l_sensor"/>
+		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
 
@@ -770,20 +776,14 @@
 
 	</link>
 
-	<joint name="r_sensor_joint" type="fixed">
+	<joint name="r_sensor_joint" type="revolute">
 		
 		<origin xyz="0.025 0.090 0.034" rpy="0 0 -0.785398163"/>
 		<parent link="main_body"/>
 		<child link="link_r_sensor"/>
+		<limit effort="1000" velocity="0.0" lower="0" upper="0" />
 	</joint>
 
-	<!-- ### GAZEBO ### -->
-
-	<gazebo>
-  		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-    		<robotNamespace>/dreamwalker</robotNamespace>
-  		</plugin>
-	</gazebo>
 										
 	<!-- ### TRANSMISSIONS -->
 
@@ -978,39 +978,5 @@
 
   	</transmission>
 
-
-	<!-- COLORS AND FRICTION PARAMETERS -->
-
-	<gazebo reference="main_body">
-    	<material>Gazebo/Grey</material>
-  	</gazebo>
-
-  	<gazebo reference="link_foot1">
-    	<!-- using sdf block syntax directly in extension -->
-    	<collision>
-      		<friction>      
-        		<ode>      
-          			<mu>1.5</mu>
-          			<mu2>1.5</mu2>
-        		</ode>      
-      		</friction>      
-    	</collision>
-  	</gazebo>
-
-  	<gazebo reference="link_foot1">
-    	<material>Gazebo/Black</material>
-  	</gazebo>
-
-  	<gazebo reference="link_foot2">
-    	<material>Gazebo/Black</material>
-  	</gazebo>
-
-  	<gazebo reference="link_foot3">
-    	<material>Gazebo/Black</material>
-  	</gazebo>
-
-  	<gazebo reference="link_foot4">
-    	<material>Gazebo/Black</material>
-  	</gazebo>
 
 </robot>

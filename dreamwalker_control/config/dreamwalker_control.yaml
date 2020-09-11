@@ -8,19 +8,19 @@ dreamwalker:
   shoulder_joint1_position_controller:
     type: effort_controllers/JointPositionController
     joint: shoulder_joint1
-    pid: {p: 10.0, i: 0.00, d: 0.0}
+    pid: {p: 10.0, i: 0.50, d: 0.0}
   shoulder_joint2_position_controller:
     type: effort_controllers/JointPositionController
     joint: shoulder_joint2
-    pid: {p: 10.0, i: 0.00, d: 0.0}
+    pid: {p: 10.0, i: 0.50, d: 0.0}
   shoulder_joint3_position_controller:
     type: effort_controllers/JointPositionController
     joint: shoulder_joint3
-    pid: {p: 10.0, i: 0.00, d: 0.0}
+    pid: {p: 10.0, i: 0.50, d: 0.0}
   shoulder_joint4_position_controller:
     type: effort_controllers/JointPositionController
     joint: shoulder_joint4
-    pid: {p: 10.0, i: 0.00, d: 0.0}
+    pid: {p: 10.0, i: 0.50, d: 0.0}
   limb_joint1_position_controller:
     type: effort_controllers/JointPositionController
     joint: limb_joint1

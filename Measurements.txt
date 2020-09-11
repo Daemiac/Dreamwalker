@@ -376,169 +376,45 @@ Moment of Inertia at Origin   (g mm^2)
 ####################################################
 
 
-link_tibia1 v1
+link_forearm1, link_forearm2
+
+Longer_tibia
 
 Component Instances (1)
-Area	3463.656 mm^2
+Area	3859.718 mm^2
 Density	0.001 g / mm^3
-Mass	6.51 g
-Volume	6141.204 mm^3
+Mass	7.298 g
+Volume	6885.015 mm^3
 Physical Material	ABS Plastic
 
 Bounding Box
 	Length 	 5.00 mm
 	Width 	 20.00 mm
-	Height 	 82.50 mm
-World X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
-Center of Mass	-2.50 mm, 0.867 mm, -27.677 mm
+	Height 	 92.50 mm
+World X,Y,Z	-2.50 mm, 0.00 mm, 0.00 mm
+Center of Mass	-2.50 mm, 0.90 mm, -32.102 mm
 
 Moment of Inertia at Center of Mass   (g mm^2)
-	Ixx = 3593.654
+	Ixx = 5046.405
 	Ixy = 0.00
 	Ixz = 0.00
 	Iyx = 0.00
-	Iyy = 3455.444
-	Iyz = 74.876
+	Iyy = 4893.134
+	Iyz = 99.01
 	Izx = 0.00
-	Izy = 74.876
-	Izz = 165.334
+	Izy = 99.01
+	Izz = 183.68
 
 Moment of Inertia at Origin   (g mm^2)
-	Ixx = 8584.909
-	Ixy = 14.108
-	Ixz = -450.414
-	Iyx = 14.108
-	Iyy = 8482.492
-	Iyz = 231.063
-	Izx = -450.414
-	Izy = 231.063
-	Izz = 210.911
-
-
-####################################################
-
-
-link_tibia2 v1
-
-Component Instances (1)
-Area	3463.656 mm^2
-Density	0.001 g / mm^3
-Mass	6.51 g
-Volume	6141.204 mm^3
-Physical Material	ABS Plastic
-
-Bounding Box
-	Length 	 5.00 mm
-	Width 	 20.00 mm
-	Height 	 82.50 mm
-World X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
-Center of Mass	2.50 mm, 0.867 mm, -27.677 mm
-
-Moment of Inertia at Center of Mass   (g mm^2)
-	Ixx = 3593.654
-	Ixy = 0.00
-	Ixz = 0.00
-	Iyx = 0.00
-	Iyy = 3455.444
-	Iyz = 74.876
-	Izx = 0.00
-	Izy = 74.876
-	Izz = 165.334
-
-Moment of Inertia at Origin   (g mm^2)
-	Ixx = 8584.909
-	Ixy = -14.108
-	Ixz = 450.414
-	Iyx = -14.108
-	Iyy = 8482.492
-	Iyz = 231.063
-	Izx = 450.414
-	Izy = 231.063
-	Izz = 210.911
-
-
-####################################################
-
-
-link_tibia3 v1
-
-Component Instances (1)
-Area	3463.656 mm^2
-Density	0.001 g / mm^3
-Mass	6.51 g
-Volume	6141.204 mm^3
-Physical Material	ABS Plastic
-
-Bounding Box
-	Length 	 5.00 mm
-	Width 	 20.00 mm
-	Height 	 82.50 mm
-World X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
-Center of Mass	-2.50 mm, -0.867 mm, -27.677 mm
-
-Moment of Inertia at Center of Mass   (g mm^2)
-	Ixx = 3593.654
-	Ixy = 0.00
-	Ixz = 0.00
-	Iyx = 0.00
-	Iyy = 3455.444
-	Iyz = -74.876
-	Izx = 0.00
-	Izy = -74.876
-	Izz = 165.334
-
-Moment of Inertia at Origin   (g mm^2)
-	Ixx = 8584.909
-	Ixy = -14.108
-	Ixz = -450.414
-	Iyx = -14.108
-	Iyy = 8482.492
-	Iyz = -231.063
-	Izx = -450.414
-	Izy = -231.063
-	Izz = 210.911
-
-
-####################################################
-
-
-link_tibia4 v1
-
-Component Instances (1)
-Area	3463.656 mm^2
-Density	0.001 g / mm^3
-Mass	6.51 g
-Volume	6141.204 mm^3
-Physical Material	ABS Plastic
-
-Bounding Box
-	Length 	 5.00 mm
-	Width 	 20.00 mm
-	Height 	 82.50 mm
-World X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
-Center of Mass	2.50 mm, -0.867 mm, -27.677 mm
-
-Moment of Inertia at Center of Mass   (g mm^2)
-	Ixx = 3593.654
-	Ixy = 0.00
-	Ixz = 0.00
-	Iyx = 0.00
-	Iyy = 3455.444
-	Iyz = -74.876
-	Izx = 0.00
-	Izy = -74.876
-	Izz = 165.334
-
-Moment of Inertia at Origin   (g mm^2)
-	Ixx = 8584.909
-	Ixy = 14.108
-	Ixz = 450.414
-	Iyx = 14.108
-	Iyy = 8482.492
-	Iyz = -231.063
-	Izx = 450.414
-	Izy = -231.063
-	Izz = 210.911
+	Ixx = 1.257E+04
+	Ixy = 16.412
+	Ixz = -585.717
+	Iyx = 16.412
+	Iyy = 1.246E+04
+	Iyz = 309.761
+	Izx = -585.717
+	Izy = 309.761
+	Izz = 235.199
 
 
 ####################################################
@@ -582,6 +458,92 @@ Moment of Inertia at Origin   (g mm^2)
 	Izy = 0.00
 	Izz = 54.089
 
+
+####################################################
+
+m_sensor_link, b_sensor_link
+
+fb_sensor v1
+
+Component Instances (1)
+Area	5540.404 mm^2
+Density	0.001 g / mm^3
+Mass	10.172 g
+Volume	7842.484 mm^3
+Physical Material	(Various)
+
+Bounding Box
+	Length 	 50.00 mm
+	Width 	 29.30 mm
+	Height 	 22.50 mm
+World X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
+Center of Mass	2.788E-04 mm, 15.906 mm, 10.99 mm
+
+Moment of Inertia at Center of Mass   (g mm^2)
+	Ixx = 566.328
+	Ixy = -0.004
+	Ixz = 1.025
+	Iyx = -0.004
+	Iyy = 2259.218
+	Iyz = -94.40
+	Izx = 1.025
+	Izy = -94.40
+	Izz = 2156.532
+
+Moment of Inertia at Origin   (g mm^2)
+	Ixx = 4368.418
+	Ixy = -0.049
+	Ixz = 0.994
+	Iyx = -0.049
+	Iyy = 3487.73
+	Iyz = -1872.509
+	Izx = 0.994
+	Izy = -1872.509
+	Izz = 4730.11
+
+
+
+####################################################
+
+l_sensor_link, r_sensor_link
+
+link_rl_sensor v1
+
+Component Instances (1)
+Area	5346.473 mm^2
+Density	0.001 g / mm^3
+Mass	9.834 g
+Volume	7523.11 mm^3
+Physical Material	(Various)
+
+Bounding Box
+	Length 	 30.00 mm
+	Width 	 24.30 mm
+	Height 	 52.00 mm
+World X,Y,Z	0.00 mm, 0.00 mm, 0.00 mm
+Center of Mass	-2.249E-08 mm, 13.365 mm, 24.947 mm
+
+Moment of Inertia at Center of Mass   (g mm^2)
+	Ixx = 2392.374
+	Ixy = -9.894E-07
+	Ixz = 3.435E-07
+	Iyx = -9.894E-07
+	Iyy = 2455.416
+	Iyz = -93.261
+	Izx = 3.435E-07
+	Izy = -93.261
+	Izz = 406.513
+
+Moment of Inertia at Origin   (g mm^2)
+	Ixx = 1.027E+04
+	Ixy = 1.967E-06
+	Ixz = 5.862E-06
+	Iyx = 1.967E-06
+	Iyy = 8575.267
+	Iyz = -3372.018
+	Izx = 5.862E-06
+	Izy = -3372.018
+	Izz = 2163.132
 
 ####################################################
 
