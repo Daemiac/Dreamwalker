@@ -15,6 +15,8 @@ from std_msgs.msg import String, Float32, Int32
 from sensor_msgs.msg import Range
 from dreamwalker_control.srv import Service_GUI_Command, Service_GUI_CommandResponse
 import sys
+import threading
+
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
@@ -29,11 +31,13 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+
 class Ui_MainWindow(object):
 
     #service client
     rospy.wait_for_service('command_service')
     commanded_service = rospy.ServiceProxy('command_service', Service_GUI_Command)
+
 
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
@@ -73,6 +77,7 @@ class Ui_MainWindow(object):
         self.left_sensor_value = QtGui.QLCDNumber(self.centralwidget)
         self.left_sensor_value.setGeometry(QtCore.QRect(440, 110, 80, 40))
         self.left_sensor_value.setObjectName(_fromUtf8("left_sensor_value"))
+        self.left_sensor_value.display(sensor1_val)
         self.right_sensor_value = QtGui.QLCDNumber(self.centralwidget)
         self.right_sensor_value.setGeometry(QtCore.QRect(660, 110, 80, 40))
         self.right_sensor_value.setObjectName(_fromUtf8("right_sensor_value"))
@@ -187,33 +192,14 @@ class Ui_MainWindow(object):
         obtained_feedback = command.response
         self.textBrowser.append(obtained_feedback)
 
-    def right_callback(self, msg):
-        value = msg.data
-        print(value)
-        str_value = str(value)
-        self.left_sensor_value.display(str_value)
-
-    def updateSensorValues(self):
-        self.thread = WorkThread()
-        self.left_sensor_value.display(WorkThread.left_callback)
-
-
-
-class WorkThread(QtCore.QThread):
-    def __init__(self):
-        QtCore.QThread.__init__(self)
-
-    #def __del__(self):
-        #self.wait():
-
-    def run(self):
-        pass
 
 
 if __name__ == "__main__":
     rospy.init_node('new_GUI')
     r = rospy.Rate(100)
     rospy.loginfo("GUI initialized, let's get started!")
+
+    #x = threading.Thread(target=)
 
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
