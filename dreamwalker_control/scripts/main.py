@@ -5,6 +5,7 @@ from std_msgs.msg import Float64, String
 from std_msgs.msg import Float32
 import math
 from dreamwalker_control.srv import Service_GUI_Command, Service_GUI_CommandResponse
+import numpy
 
 joint_node = { "shoulder1": "/dreamwalker/shoulder_joint1_position_controller/command", 
 				"shoulder2": "/dreamwalker/shoulder_joint2_position_controller/command",
@@ -13,7 +14,12 @@ joint_node = { "shoulder1": "/dreamwalker/shoulder_joint1_position_controller/co
 				"limb1": "/dreamwalker/limb_joint1_position_controller/command",
 				"limb2": "/dreamwalker/limb_joint2_position_controller/command",
 				"limb3": "/dreamwalker/limb_joint3_position_controller/command",
-				"limb4": "/dreamwalker/limb_joint4_position_controller/command"  }
+				"limb4": "/dreamwalker/limb_joint4_position_controller/command",
+				"knee1": "/dreamwalker/knee_joint1_position_controller/command",
+				"knee2": "/dreamwalker/knee_joint2_position_controller/command",
+				"knee3": "/dreamwalker/knee_joint3_position_controller/command",
+				"knee4": "/dreamwalker/knee_joint4_position_controller/command" }
+
 
 
 class Leg():
@@ -23,44 +29,76 @@ class Leg():
 		self._shoulder_joint = Joint(command=servo1, up_limit=30, low_limit=(-30))
 		self._limb_joint = Joint(command=servo2, up_limit=90, low_limit=(-90))
 		self._knee_joint = Joint(command=servo3, up_limit=150, low_limit=-50)
-		self.signal = None
+		
+		# zmienne na potrzeby skakania jak kretyn
+		self.base_position = [0.0, numpy.radians(-45), numpy.radians(75)]
 		self.enabled = None
+		self.jump_point = [0.0, 0.0, 0.0]
 
-	def reset_leg_position(self, value):
+		# przechowuje informacje na temat aktualnej pozycji nogi
+		self.current_leg_pos = [0, -45, 75]
+
+		self.test_leg_pos = [0, -75, 110]
+
+
+	def set_idle_position(self):
 		""" Sets all servomotors to default position """
+		self._shoulder_joint._pub.publish(self.base_position[0])
+		self._limb_joint._pub.publish(self.base_position[1])
+		self._knee_joint._pub.publish(self.base_position[2])
+
+	def move_to_pos(self, position):
+		angle = position
+
+
+	def move_to_point(self):
+		""" Moves the leg to defined point """
+		shoulder_angle = self.test_leg_pos[0]
+		limb_angle = self.test_leg_pos[1]
+		knee_angle = self.test_leg_pos[2]
+
+		while(self.current_leg_pos[0]!=shoulder_angle and self.current_leg_pos[1]!=limb_angle and self.current_leg_pos!=knee_angle):
+			# shoulder joint
+			if shoulder_angle > self.current_leg_pos[0]:
+				self.current_leg_pos[0] = self.current_leg_pos[0]+1
+				self._shoulder_joint._pub.publish(numpy.radians(self.current_leg_pos[0]))
+				print(self.current_leg_pos[0])
+			elif shoulder_angle < self.current_leg_pos[0]:
+				self.current_leg_pos[0] = self.current_leg_pos[0]-1
+				self._shoulder_joint._pub.publish(numpy.radians(self.current_leg_pos[0]))
+				print(self.current_leg_pos[0])
+
+			#limb joint
+			if limb_angle > self.current_leg_pos[1]:
+				self.current_leg_pos[1] = self.current_leg_pos[1]+1
+				self._limb_joint._pub.publish(numpy.radians(self.current_leg_pos[1]))
+			elif limb_angle < self.current_leg_pos[1]:
+				self.current_leg_pos[1] = self.current_leg_pos[1]-1
+				self._limb_joint._pub.publish(numpy.radians(self.current_leg_pos[1]))
+
+			# knee joint
+			if knee_angle > self.current_leg_pos[2]:
+				self.current_leg_pos[2] = self.current_leg_pos[2]+1
+				self._knee_joint._pub.publish(numpy.radians(self.current_leg_pos[2]))
+			elif shoulder_angle < self.current_leg_pos[2]:
+				self.current_leg_pos[2] = self.current_leg_pos[2]-1
+				self._knee_joint._pub.publish(numpy.radians(self.current_leg_pos[2]))
+			rospy.sleep(0.1)
+
+		print("Leg moved!")
+
+
+	def prowl_move(self):
 		self._shoulder_joint._pub.publish(0.0)
-		self._limb_joint._pub.publish(0.0)
-		self._knee_joint._pub.publish(0.0)
-		print "All joints set to 0"
+		self._limb_joint._pub.publish(numpy.radians(-75))
+		self._knee_joint._pub.publish(numpy.radians(110))
 
 
-	def is_enabled(self, leg):
-		self.signal = leg.data
-		if self.signal == self._mark:
-			self.enabled = True
-			print "Leg enabled: {}".format(self.signal)
+	def jump_move(self):
+		self._shoulder_joint._pub.publish(self.jump_point[0])
+		self._limb_joint._pub.publish(self.jump_point[1])
+		self._knee_joint._pub.publish(self.jump_point[2])
 
-		else:
-			self.enabled = False
-			print "Leg disabled: {}".format(self._mark)
-
-
-	def move_shoulder_servo(self, value):
-		self.value = value.data
-		if self.signal == self._mark:
-			self._shoulder_joint.set_joint_value(self.value)
-
-
-	def move_limb_servo(self, value):
-		self.value = value.data
-		if self.signal == self._mark:
-			self._limb_joint.set_joint_value(self.value)
-
-
-	def move_knee_servo(self, value):
-		self.value = value.data
-		if self.signal == self._mark:
-			self._knee_joint.set_joint_value(self.value)
 
 
 class Joint():
@@ -98,10 +136,34 @@ class Robot():
 
 		service=rospy.Service('command_service',Service_GUI_Command, self.turn_on_off)
 		self.command = 0
+		# leg objects
+		self._leg1 = Leg(name="FL", servo1=joint_node["shoulder1"], servo2=joint_node["limb1"], servo3=joint_node["knee1"])
+		self._leg2 = Leg(name="FR", servo1=joint_node["shoulder2"], servo2=joint_node["limb2"], servo3=joint_node["knee2"])
+		self._leg3 = Leg(name="BL", servo1=joint_node["shoulder3"], servo2=joint_node["limb3"], servo3=joint_node["knee3"])
+		self._leg4 = Leg(name="BR", servo1=joint_node["shoulder4"], servo2=joint_node["limb4"], servo3=joint_node["knee4"])
+
+	def set_idle(self):
+		self._leg1.set_idle_position()
+		self._leg2.set_idle_position()
+		self._leg3.set_idle_position()
+		self._leg4.set_idle_position()
+
+	def set_jump(self):
+		self._leg1.jump_move()
+		self._leg2.jump_move()
+		self._leg3.jump_move()
+		self._leg4.jump_move()
+
+	def prowl(self):
+		self._leg1.prowl_move()
+		self._leg2.prowl_move()
+		self._leg3.prowl_move()
+		self._leg4.prowl_move()
 	
 	def turn_on_off(self, request):
 		if request.command=="FORWARD":
 			self.command = 1
+			print("Robot jumps")
 			return Service_GUI_CommandResponse("Robot going forward")
 		elif request.command=="LEFT":
 			self.command = 2
@@ -120,18 +182,32 @@ class Robot():
 			return Service_GUI_CommandResponse("Robot goes back")
 		elif request.command=="STOP":
 			self.command = 0
+			print("Robot goes to idle state")
 			return Service_GUI_CommandResponse("State: IDLE")
 
 	def run(self):
-		rate = rospy.Rate(10)
+		rate = rospy.Rate(20)
 
 		while not rospy.is_shutdown():
 			if self.command == 0:
-				print("Robot is in idle state")
+				try:
+					self.set_idle()
+				except TypeError:
+					print("something is no yes")
 			elif self.command == 1:
-				print("Robot goes forward")
+				try:
+					self.prowl()
+					rospy.sleep(0.5)
+					self.set_idle()
+					rospy.sleep(0.5)
+					self.set_jump()
+					rospy.sleep(0.5)
+					self.set_idle()
+					rospy.sleep(0.5)
+				except TypeError:
+					print("something is even worse")
 			elif self.command == 2:
-				print("Robot goes left")
+				self._leg1.move_to_point()
 			elif self.command == 3:
 				print("Robot goes right")
 			elif self.command == 4:
@@ -139,7 +215,10 @@ class Robot():
 			elif self.command == 5:
 				print("Robot spins right")
 			elif self.command == 6:
-				print("Robot goes back")	
+				try:
+					self.prowl()
+				except TypeError:
+					print("Welcome to Uganda")	
 
 			rate.sleep()
 
