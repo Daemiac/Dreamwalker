@@ -13,7 +13,6 @@ def generate_trajectory():
         point = [round(x, 1), y, z]
         point_list.append(point)
         y -= 2
-        x -= 0.1
     print(point_list)
     return point_list
 
@@ -43,15 +42,16 @@ def inverse_kinematics(point):
     #print('theta_2: ', rad2deg(theta_2))
     #print('theta_3: ', rad2deg(theta_3))
 
-    theta1 = round(rad2deg(theta_1))
-    theta2 = round(rad2deg(theta_2))
-    theta3 = round(rad2deg(theta_3))
+    theta1 = int(round(rad2deg(theta_1)))
+    theta2 = int(round(rad2deg(theta_2)))
+    theta3 = int(round(rad2deg(theta_3)))
 
     angles = [theta1, theta2, theta3]
     return angles
 
 
 def main():
+    trajectory = [[24, 95, 0], [24, 80, 15], [24, 95, 30], [24, 95, 0], [24, 95, -30], [24, 80, -15]]
     list_of_angles = []
     for item in generate_trajectory():
         list_of_angles.append(inverse_kinematics(item))

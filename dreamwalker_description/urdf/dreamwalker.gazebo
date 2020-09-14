@@ -202,10 +202,30 @@
         <material>Gazebo/Red</material>
   	</gazebo>
 
+    <gazebo reference="link_tibia1">
+      <mu1>100</mu1>
+      <mu2>100</mu2>
+    </gazebo>
+
+    <gazebo reference="link_tibia2">
+      <mu1>100</mu1>
+      <mu2>100</mu2>
+    </gazebo>
+
+    <gazebo reference="link_tibia3">
+      <mu1>100</mu1>
+      <mu2>100</mu2>
+    </gazebo>
+
+    <gazebo reference="link_tibia4">
+      <mu1>100</mu1>
+      <mu2>100</mu2>
+    </gazebo>
+
   	<gazebo reference="link_foot1">
       <!-- using sdf block syntax directly in extension -->
-  		<mu1>10</mu1>
-  		<mu2>10</mu2>
+  		<mu1>100</mu1>
+  		<mu2>100</mu2>
     	<material>Gazebo/Black</material>
 
   	</gazebo>

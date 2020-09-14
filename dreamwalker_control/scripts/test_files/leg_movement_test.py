@@ -91,7 +91,7 @@ class Leg():
 				self._knee_joint._pub.publish(numpy.radians(self.current_pos[2]))
 			
 			rospy.sleep(0.001)
-			print(self.current_pos)
+			#print(self.current_pos)
 
 	def make_step(self, trajectory):
 		""" simulates one full movement of a step """

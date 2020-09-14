@@ -59,7 +59,7 @@
     <remap from="/joint_states" to="/dreamwalker/joint_states" />
   </node>
 
-<node pkg="dreamwalker_control" type="main.py" name="dreamwalker_control" output="screen">
+<node pkg="dreamwalker_control" type="leg_movement_test.py" name="leg_test" output="screen">
   </node>
 
 <node pkg="dreamwalker_control" type="robot_gui.py" name="gui_node" output="screen">

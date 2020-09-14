@@ -70,7 +70,7 @@ if __name__ == "__main__":
     fi1 = []
     fi2 = []
     fi3 = []
-    for i in range(-30, 30, 3):  # range of shoulder servo in angles
+    for i in range(0, 1):  # range of shoulder servo in angles
         fi1.append(i)
         for j in range(-90, 1, 5):  # range of arm servo in angles
             fi2.append(j)
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.plot(x, z, y, label="Inverse kinematics points", c="red")
+    ax.scatter(x, z, y, label="Inverse kinematics points", c="red", s=1)
     ax.legend()
     plt.xlabel("X axis")
     plt.ylabel("Z axis")
