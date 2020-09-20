@@ -21,10 +21,27 @@ joint_node = { "shoulder1": "/dreamwalker/shoulder_joint1_position_controller/co
 				"knee3": "/dreamwalker/knee_joint3_position_controller/command",
 				"knee4": "/dreamwalker/knee_joint4_position_controller/command" }
 
-step_trajectory = ([0.0, -50.0, 90.0], [0.0, -46.0, 90.0], [0.0, -44.0, 90.0], [0.0, -50.0, 90.0], [0.0, -56.0, 90.0], [0.0, -53.0, 90.0])
-trajectory = [[0.0, -61.0, 109.0], [0.0, -63.0, 112.0], [0.0, -64.0, 114.0], [0.0, -66.0, 116.0], [0.0, -67.0, 119.0], 
-				[0.0, -69.0, 121.0], [1.0, -70.0, 123.0], [1.0, -72.0, 125.0], [1.0, -73.0, 128.0], [1.0, -75.0, 130.0], 
-				[1.0, -77.0, 132.0], [1.0, -78.0, 134.0], [2.0, -80.0, 137.0]]
+gait_p1 = ([0, -81, 116], [0, -66, 117], [0, -48, 98])
+gait_p2 = ([0, -52, 99], [0, -55, 99], [0, -58, 100])
+gait_p3 = ([0, -60, 100], [0, -63, 100], [0, -65, 99])
+gait_p4 = ([0, -68, 99], [0, -70, 98], [0, -72, 97])
+
+step1 = ([0, -67, 99], [0, -68, 112], [0, -53, 99], [0, -60, 100])
+step2 = ([0, -53, 99], [0, -60, 100], [0, -67, 99], [0, -68, 112])
+
+step1_b = ([0, -53, 99], [0, -68, 112], [0, -67, 99], [0, -60, 100])
+step2_b = ([0, -67, 99], [0, -60, 100], [0, -53, 99], [0, -68, 112])
+
+left1 = ([0, -68, 112], [12, -55, 91])
+right1 = ([0, -68, 112], [-12, -55, 91])
+
+spin1 = ([0, -68, 112], [12, -55, 91])
+spin2 = ([0, -68, 112], [-12,-55, 91])
+
+side_to_base = ([0, -68, 112], [0, -60, 100])
+
+swing1 = ([0.0, -64, 95], [10, -64, 95], [0, -64, 95])
+swing2 = ([0.0, -64, 95], [-10, -64, 95], [0, -64, 95])
 
 
 class Leg():
@@ -35,13 +52,11 @@ class Leg():
 		self._limb_joint = Joint(command=servo2, up_limit=90, low_limit=(-90))
 		self._knee_joint = Joint(command=servo3, up_limit=150, low_limit=-50)
 		
-		# zmienne na potrzeby skakania jak kretyn
-		self.base_position = [0, -50, 90]
+		# angles of leg's base position
+		self.base_position = [0, -60, 100]
 		self.enabled = None
-		self.prowl_point = [0, -75, 110]
-		self.jump_point = [0, 0, 0]
 
-		# przechowuje informacje na temat aktualnej pozycji nogi
+		# current leg position angles
 		self.current_pos = [0, 0, 0]
 
 		if self._name == "FL" or self._name == "BL":
@@ -56,10 +71,10 @@ class Leg():
 		self._limb_joint._pub.publish(numpy.radians(self.base_position[1]))
 		self._knee_joint._pub.publish(numpy.radians(self.base_position[2]))
 
-		self.current_pos = [0, -45, 75]
+		self.current_pos = [0, -60, 100]
 
 
-	def move_to_point(self, next_position):
+	def move_to_point(self, next_position, speed):
 		""" Moves the leg to defined point """
 		shoulder_angle = int(next_position[0])
 		limb_angle = int(next_position[1])
@@ -90,20 +105,15 @@ class Leg():
 				self.current_pos[2] = self.current_pos[2]-1
 				self._knee_joint._pub.publish(numpy.radians(self.current_pos[2]))
 			
-			rospy.sleep(0.001)
-			print(self.current_pos)
+			rospy.sleep(speed)
+			#print(self.current_pos)
 
-	def make_step(self, trajectory):
+
+	def make_step(self, trajectory, speed):
 		""" simulates one full movement of a step """
 		for item in trajectory:
-			self.move_through(item)
-			rospy.sleep(0.1)
-
-	def move_through(self, point):
-		self._shoulder_joint._pub.publish(numpy.radians(point[0]))
-		self._limb_joint._pub.publish(numpy.radians(point[1]))
-		self._knee_joint._pub.publish(numpy.radians(point[2]))
-
+			self.move_to_point(item, speed)
+			rospy.sleep(0.001)
 
 
 class Joint():
@@ -142,98 +152,155 @@ class Robot():
 		self._leg4 = Leg(name="BR", servo1=joint_node["shoulder4"], servo2=joint_node["limb4"], servo3=joint_node["knee4"])
 
 	def initialize(self):
+		""" setting robot legs to base position"""
 		self._leg1.set_idle_position()
 		self._leg2.set_idle_position()
 		self._leg3.set_idle_position()
 		self._leg4.set_idle_position()
 
+	def work_threads(self, t1, t2, t3, t4):
+		t1.start()
+		t2.start()
+		t3.start()
+		t4.start()
+
+		t1.join()
+		t2.join()
+		t3.join()
+		t4.join()
+
 	def set_idle(self):
-		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position,))
-		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.base_position,))
-		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.base_position,))
-		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.base_position,))
+		self.speed = 0.01
+
+		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position, self.speed,))
+		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.base_position, self.speed,))
+		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.base_position, self.speed,))
+		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.base_position, self.speed,))
 		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
+		self.work_threads(t1, t2, t3, t4)
 
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
+	def gait_init(self):
+		self.speed = 0.01
+		self._leg1.move_to_point(gait_p4[2], self.speed)
+		self._leg4.move_to_point(gait_p3[2], self.speed)
+		self._leg2.move_to_point(gait_p2[2], self.speed)
+		self._leg3.move_to_point(gait_p1[2], self.speed)
 
+	def gait(self):
+		self.speed1 = 0.01
+		self.speed2 = 0.01
 
-	def set_jump(self):
-		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.jump_point,))
-		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.jump_point,))
-		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.jump_point,))
-		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.jump_point,))
-		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
+		t1 = Thread(target=self._leg1.make_step, args=(gait_p1, self.speed1,))
+		t2 = Thread(target=self._leg2.make_step, args=(gait_p3, self.speed2,))
+		t3 = Thread(target=self._leg3.make_step, args=(gait_p2, self.speed2,))
+		t4 = Thread(target=self._leg4.make_step, args=(gait_p4, self.speed2,))
+		self.work_threads(t1, t2, t3, t4)
 
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
+		t1 = Thread(target=self._leg1.make_step, args=(gait_p2, self.speed2,))
+		t2 = Thread(target=self._leg2.make_step, args=(gait_p4, self.speed2,))
+		t3 = Thread(target=self._leg3.make_step, args=(gait_p3, self.speed2,))
+		t4 = Thread(target=self._leg4.make_step, args=(gait_p1, self.speed1,))
+		self.work_threads(t1, t2, t3, t4)
 
+		t1 = Thread(target=self._leg1.make_step, args=(gait_p3, self.speed2,))
+		t2 = Thread(target=self._leg2.make_step, args=(gait_p1, self.speed1,))
+		t3 = Thread(target=self._leg3.make_step, args=(gait_p4, self.speed2,))
+		t4 = Thread(target=self._leg4.make_step, args=(gait_p2, self.speed2,))
+		self.work_threads(t1, t2, t3, t4)
 
-	def prowl(self):
-		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.prowl_point,))
-		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.prowl_point,))
-		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.prowl_point,))
-		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.prowl_point,))
-		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
-
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
-
+		t1 = Thread(target=self._leg1.make_step, args=(gait_p4, self.speed2))
+		t2 = Thread(target=self._leg2.make_step, args=(gait_p2, self.speed2))
+		t3 = Thread(target=self._leg3.make_step, args=(gait_p1, self.speed1))
+		t4 = Thread(target=self._leg4.make_step, args=(gait_p3, self.speed2))
+		self.work_threads(t1, t2, t3, t4)
 
 	def trot(self):
-		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position,))
-		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.jump_point,))
-		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.jump_point,))
-		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.base_position,))
+		self.speed = 0.01
+		t1 = Thread(target=self._leg1.make_step, args=(step1, self.speed,))
+		t2 = Thread(target=self._leg2.make_step, args=(step2, self.speed,))
+		t3 = Thread(target=self._leg3.make_step, args=(step2, self.speed,))
+		t4 = Thread(target=self._leg4.make_step, args=(step1, self.speed,))
 		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
+		self.work_threads(t1, t2, t3, t4)
 
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
+	def go_left(self):
+		self.speed = 0.01
 
-		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.jump_point,))
-		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.base_position,))
-		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.base_position,))
-		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.jump_point,))
+		self._leg1.make_step(left1, self.speed)
+		self._leg3.make_step(left1, self.speed)
 		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
+		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position, self.speed,))
+		t2 = Thread(target=self._leg2.move_to_point, args=(right1[1], self.speed,))
+		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.base_position, self.speed,))
+		t4 = Thread(target=self._leg4.move_to_point, args=(right1[1], self.speed,))
 
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
+		self.work_threads(t1, t2, t3, t4)
+
+		self._leg2.make_step(side_to_base, self.speed)
+		self._leg4.make_step(side_to_base, self.speed)
+
+	def go_right(self):
+		self.speed = 0.01
+
+		self._leg2.make_step(right1, self.speed)
+		self._leg4.make_step(right1, self.speed)
+
+		t1 = Thread(target=self._leg1.move_to_point, args=(left1[1], self.speed,))
+		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.base_position, self.speed,))
+		t3 = Thread(target=self._leg3.move_to_point, args=(left1[1], self.speed,))
+		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.base_position, self.speed,))
+
+		self.work_threads(t1, t2, t3, t4)
+
+		self._leg1.make_step(side_to_base, self.speed)
+		self._leg3.make_step(side_to_base, self.speed)
+
+	def spin_left(self):
+		self.speed = 0.01
+
+		self._leg1.make_step(left1, self.speed)
+		self._leg4.make_step(right1, self.speed)
+
+		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position, self.speed,))
+		t2 = Thread(target=self._leg2.move_to_point, args=(right1[1], self.speed,))
+		t3 = Thread(target=self._leg3.move_to_point, args=(left1[1], self.speed,))
+		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.base_position, self.speed,))
+
+		self.work_threads(t1, t2, t3, t4)
+
+		self._leg2.make_step(side_to_base, self.speed)
+		self._leg3.make_step(side_to_base, self.speed)
+
+	def spin_right(self):
+		self.speed = 0.01
+
+		self._leg2.make_step(right1, self.speed)
+		self._leg3.make_step(left1, self.speed)
+
+		t1 = Thread(target=self._leg1.move_to_point, args=(left1[1], self.speed,))
+		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.base_position, self.speed,))
+		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.base_position, self.speed,))
+		t4 = Thread(target=self._leg4.move_to_point, args=(right1[1], self.speed,))
+
+		self.work_threads(t1, t2, t3, t4)
+
+		self._leg1.make_step(side_to_base, self.speed)
+		self._leg4.make_step(side_to_base, self.speed)
+
+	def go_backwards(self):
+		self.speed = 0.01
+
+		t1 = Thread(target=self._leg1.make_step, args=(step1_b, self.speed,))
+		t2 = Thread(target=self._leg2.make_step, args=(step2_b, self.speed,))
+		t3 = Thread(target=self._leg3.make_step, args=(step2_b, self.speed,))
+		t4 = Thread(target=self._leg4.make_step, args=(step1_b, self.speed,))
+		
+		self.work_threads(t1, t2, t3, t4)
 
 	
 	def turn_on_off(self, request):
 		if request.command=="FORWARD":
 			self.command = 1
-			print("Robot jumps")
 			return Service_GUI_CommandResponse("Robot going forward")
 		elif request.command=="LEFT":
 			self.command = 2
@@ -252,13 +319,10 @@ class Robot():
 			return Service_GUI_CommandResponse("Robot goes back")
 		elif request.command=="STOP":
 			self.command = 0
-			print("Robot goes to idle state")
 			return Service_GUI_CommandResponse("State: IDLE")
 
 	def run(self):
 		rate = rospy.Rate(50)
-
-		self.initialize()
 
 		while not rospy.is_shutdown():
 			if self.command == -1:
@@ -266,29 +330,19 @@ class Robot():
 			elif self.command == 0:
 				self.set_idle()
 			elif self.command == 1:
-				try:
-					self.set_idle()
-					rospy.sleep(0.1)
-					self.set_jump()
-					rospy.sleep(0.1)
-				except TypeError:
-					print("something is even worse")
+				self.gait_init()
+				while self.command == 1:
+					self.gait()
 			elif self.command == 2:
-				self._leg1.move_to_point(self._leg1.test_leg_pos)
-				self._leg2.move_to_point(self._leg2.test_leg_pos)
-				self._leg3.move_to_point(self._leg3.test_leg_pos)
-				self._leg4.move_to_point(self._leg4.test_leg_pos)
+				self.go_left()
 			elif self.command == 3:
-				self._leg2.make_step(trajectory)
+				self.go_right()
 			elif self.command == 4:
-				self.trot()
+				self.spin_left()
 			elif self.command == 5:
-				pass
+				self.spin_right()
 			elif self.command == 6:
-				try:
-					self.prowl()
-				except TypeError:
-					print("Welcome to Uganda")	
+				self.go_backwards()	
 
 			rate.sleep()
 

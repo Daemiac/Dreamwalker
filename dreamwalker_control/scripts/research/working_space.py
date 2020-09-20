@@ -70,11 +70,11 @@ if __name__ == "__main__":
     fi1 = []
     fi2 = []
     fi3 = []
-    for i in range(0, 1):  # range of shoulder servo in angles
+    for i in range(-30, 31, 5):  # range of shoulder servo in angles
         fi1.append(i)
-        for j in range(-90, 1, 5):  # range of arm servo in angles
+        for j in range(-90, 1, 10):  # range of arm servo in angles
             fi2.append(j)
-            for k in range(0, 121, 5):  # range of knee servo in angles
+            for k in range(0, 121, 10):  # range of knee servo in angles
                 fi3.append(k)
                 point = simple_kinematics(i, j, k)
                 list_of_lists.append(point)
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.scatter(x, z, y, label="Inverse kinematics points", c="red", s=1)
+    ax.scatter(x, z, y, label="Working space points", c="red", s=1)
     ax.legend()
     plt.xlabel("X axis")
     plt.ylabel("Z axis")

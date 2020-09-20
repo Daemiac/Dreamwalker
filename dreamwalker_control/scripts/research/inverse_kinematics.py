@@ -9,7 +9,7 @@ a3 = 65  # length of link a3 in mm
 
 # Desired Position of End effector
 x = 24
-y = 110
+y = 60
 z = 0
 
 # phi = 90
@@ -22,10 +22,11 @@ theta_1 = arctan2(y, x) - arctan2(p, a1)
 theta_3 = arctan2(sqrt(1-(D**2)), D)
 theta_2 = arctan2(z, p) - arctan2((a3*sin(theta_3)), (a2+a3*cos(theta_3)))
 
-theta_1 = rad2deg(theta_1)
-theta_2 = rad2deg(theta_2)
-theta_3 = rad2deg(theta_3)
+theta1 = int(round(rad2deg(theta_1)))
+theta2 = int(round(rad2deg(theta_2)))
+theta3 = int(round(rad2deg(theta_3)))
 
-print('theta_1: ', theta_1)
-print('theta_2: ', theta_2)
-print('theta_3: ', theta_3)
+
+print('theta_1: ', theta1)
+print('theta_2: ', theta2)
+print('theta_3: ', theta3)

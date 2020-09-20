@@ -22,14 +22,14 @@
 
  <!-- spawning the robot inside the simulation -->
 
- <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find dreamwalker_description)/urdf/dreamwalker_test.xacro'"/>
+ <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find dreamwalker_description)/urdf/dreamwalker_dummy.xacro'"/>
 
 	<!-- initial position of the robot -->
 	<arg name="x" default="0"/>
 	<arg name="y" default="0"/>
-	<arg name="z" default="0.15"/>
+	<arg name="z" default="0"/>
 
- <node name="my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"		  args="-urdf -param robot_description -model dreamwalker -x $(arg x) -y $(arg y) -z $(arg z)" />
+ <node name="my_robot_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"		  args="-urdf -param robot_description -model dreamwalker_dummy -x $(arg x) -y $(arg y) -z $(arg z)" />
 
 
  <!-- Enabling controllers -->
@@ -59,10 +59,10 @@
     <remap from="/joint_states" to="/dreamwalker/joint_states" />
   </node>
 
-<node pkg="dreamwalker_control" type="main.py" name="dreamwalker_control" output="screen">
+  <node pkg="dreamwalker_control" type="joint_test_gui.py" name="GUI" output="screen">
   </node>
 
-<node pkg="dreamwalker_control" type="robot_gui2.py" name="gui_node" output="screen">
-  </node>
+  <node pkg="dreamwalker_control" type="joint_test.py" name="joint_test1" output="screen">
+  </node> -->
 
 </launch>

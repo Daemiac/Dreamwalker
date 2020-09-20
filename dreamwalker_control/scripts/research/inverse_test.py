@@ -5,14 +5,14 @@ from numpy import *
 
 def generate_trajectory():
     # starting point
-    x = 24
-    y = 70
+    x = 4
+    y = 95
     z = 0
     point_list = []
-    for _ in range(1, 20):
+    for _ in range(1, 2):
         point = [round(x, 1), y, z]
         point_list.append(point)
-        y -= 2
+        #y -= 5
     print(point_list)
     return point_list
 
@@ -21,7 +21,7 @@ def inverse_kinematics(point):
     # Length of links in cm
     a1 = 24  # length of link a1 in mm
     a2 = 55  # length of link a2 in mm
-    a3 = 65  # length of link a3 in mm
+    a3 = 75  # length of link a3 in mm
 
     # Desired Position of End effector
     x = point[0]

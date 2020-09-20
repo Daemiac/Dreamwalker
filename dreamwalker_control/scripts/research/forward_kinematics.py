@@ -5,13 +5,13 @@ import numpy as np  # imports all function so dont have to use np.function()
 # Link lengths
 a1 = 24  # length of link a1 in mm
 a2 = 55  # length of link a2 in mm
-a3 = 65  # length of link a3 in mm
+a3 = 75  # length of link a3 in mm
 
 
 # Angles
 theta_1 = 0  # theta 1 angle in degrees
-theta_2 = -69  # theta 2 angle in degrees
-theta_3 = 180  # theta 3 angle in degrees
+theta_2 = 0  # theta 2 angle in degrees
+theta_3 = 0  # theta 3 angle in degrees
 
 theta_1 = np.deg2rad(theta_1)  # theta 1 in radians
 theta_2 = np.deg2rad(theta_2)  # theta 2 in radians

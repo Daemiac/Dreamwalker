@@ -11,11 +11,11 @@ class Sonar():
 	""" Creates a subscriber to read simulated sensor value """
 	def __init__(self, topic_name):
 		self._name = topic_name
-		self._value = rospy.Subscriber(topic_name, Float32, self.reading_value)
+		self._value = rospy.Subscriber(topic_name, Range, self.reading_value)
 		self.reading = 0
 
 	def reading_value(self, msg):
-		self.reading = msg.data
+		self.reading = msg.range
 		self.reading = round(self.reading, 2)
 
 
@@ -25,11 +25,11 @@ class SonarSystem():
 
 		rospy.loginfo("Setting up the SensorValues node...")
 
-		self._value_pub = rospy.Publisher()
+		#self._value_pub = rospy.Publisher()
 
-		self.left_sensor = Sonar('sensor1_value')
-		self.middle_sensor = Sonar('sensor2_value')
-		self.right_sensor = Sonar('sensor3_value')
+		self.left_sensor = Sonar(sonar_node["left_sensor"])
+		self.middle_sensor = Sonar(sonar_node["middle_sensor"])
+		self.right_sensor = Sonar(sonar_node["right_sensor"])
 		self.value_list = [0, 0, 0]
 		
 	def run(self):

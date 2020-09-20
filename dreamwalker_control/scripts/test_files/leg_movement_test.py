@@ -21,6 +21,9 @@ joint_node = { "shoulder1": "/dreamwalker/shoulder_joint1_position_controller/co
 				"knee3": "/dreamwalker/knee_joint3_position_controller/command",
 				"knee4": "/dreamwalker/knee_joint4_position_controller/command" }
 
+swing1 = ([0.0, -50, 90], [30, -50, 90], [0, -50, 90])
+swing2 = ([0.0, -50, 90], [-30, -50, 90], [0, -50, 90])
+
 step_trajectory = ([0.0, -50.0, 90.0], [0.0, -46.0, 90.0], [0.0, -44.0, 90.0], [0.0, -50.0, 90.0], [0.0, -56.0, 90.0], [0.0, -53.0, 90.0])
 trajectory = [[0.0, -61.0, 109.0], [0.0, -63.0, 112.0], [0.0, -64.0, 114.0], [0.0, -66.0, 116.0], [0.0, -67.0, 119.0], 
 				[0.0, -69.0, 121.0], [1.0, -70.0, 123.0], [1.0, -72.0, 125.0], [1.0, -73.0, 128.0], [1.0, -75.0, 130.0], 
@@ -37,9 +40,10 @@ class Leg():
 		
 		# zmienne na potrzeby skakania jak kretyn
 		self.base_position = [0, -50, 90]
-		self.enabled = None
 		self.prowl_point = [0, -75, 110]
 		self.jump_point = [0, 0, 0]
+		self.swing1 = [30, -50, 90]
+		self.swing2 = [-30, -50, 90]
 
 		# przechowuje informacje na temat aktualnej pozycji nogi
 		self.current_pos = [0, 0, 0]
@@ -90,20 +94,14 @@ class Leg():
 				self.current_pos[2] = self.current_pos[2]-1
 				self._knee_joint._pub.publish(numpy.radians(self.current_pos[2]))
 			
-			rospy.sleep(0.001)
+			rospy.sleep(0.01)
 			#print(self.current_pos)
 
-	def make_step(self, trajectory):
+	def move_trajectory(self, trajectory):
 		""" simulates one full movement of a step """
 		for item in trajectory:
-			self.move_through(item)
-			rospy.sleep(0.1)
-
-	def move_through(self, point):
-		self._shoulder_joint._pub.publish(numpy.radians(point[0]))
-		self._limb_joint._pub.publish(numpy.radians(point[1]))
-		self._knee_joint._pub.publish(numpy.radians(point[2]))
-
+			self.move_to_point(item)
+			rospy.sleep(0.001)
 
 
 class Joint():
@@ -147,12 +145,7 @@ class Robot():
 		self._leg3.set_idle_position()
 		self._leg4.set_idle_position()
 
-	def set_idle(self):
-		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position,))
-		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.base_position,))
-		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.base_position,))
-		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.base_position,))
-		
+	def work_threads(self, t1, t2, t3, t4):
 		t1.start()
 		t2.start()
 		t3.start()
@@ -162,6 +155,14 @@ class Robot():
 		t2.join()
 		t3.join()
 		t4.join()
+
+	def set_idle(self):
+		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position,))
+		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.base_position,))
+		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.base_position,))
+		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.base_position,))
+		
+		self.work_threads(t1, t2, t3, t4)
 
 
 	def set_jump(self):
@@ -170,15 +171,7 @@ class Robot():
 		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.jump_point,))
 		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.jump_point,))
 		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
-
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
+		self.work_threads(t1, t2, t3, t4)
 
 
 	def prowl(self):
@@ -187,16 +180,7 @@ class Robot():
 		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.prowl_point,))
 		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.prowl_point,))
 		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
-
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
-
+		self.work_threads(t1, t2, t3, t4)
 
 	def trot(self):
 		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position,))
@@ -204,31 +188,30 @@ class Robot():
 		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.jump_point,))
 		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.base_position,))
 		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
-
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
+		self.work_threads(t1, t2, t3, t4)
 
 		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.jump_point,))
 		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.base_position,))
 		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.base_position,))
 		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.jump_point,))
 		
-		t1.start()
-		t2.start()
-		t3.start()
-		t4.start()
+		self.work_threads(t1, t2, t3, t4)
 
-		t1.join()
-		t2.join()
-		t3.join()
-		t4.join()
+	def swing1(self):
+		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.swing1,))
+		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.swing1,))
+		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.swing2,))
+		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.swing2,))
 
+		self.work_threads(t1, t2, t3, t4)
+
+	def swing2(self):
+		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.swing2,))
+		t2 = Thread(target=self._leg2.move_to_point, args=(self._leg2.swing2,))
+		t3 = Thread(target=self._leg3.move_to_point, args=(self._leg3.swing1,))
+		t4 = Thread(target=self._leg4.move_to_point, args=(self._leg4.swing1,))
+
+		self.work_threads(t1, t2, t3, t4)
 	
 	def turn_on_off(self, request):
 		if request.command=="FORWARD":
@@ -274,12 +257,17 @@ class Robot():
 				except TypeError:
 					print("something is even worse")
 			elif self.command == 2:
-				self._leg1.move_to_point(self._leg1.test_leg_pos)
-				self._leg2.move_to_point(self._leg2.test_leg_pos)
-				self._leg3.move_to_point(self._leg3.test_leg_pos)
-				self._leg4.move_to_point(self._leg4.test_leg_pos)
+				self._leg1.move_trajectory(step_trajectory)
+				self._leg1.move_trajectory(swing2)
 			elif self.command == 3:
-				self._leg2.make_step(trajectory)
+				self.set_idle()
+				rospy.sleep(0.1)
+				self.swing1()
+				rospy.sleep(0.1)
+				self.set_idle()
+				rospy.sleep(0.1)
+				self.swing2()
+				rospy.sleep(0.1)
 			elif self.command == 4:
 				self.trot()
 			elif self.command == 5:
