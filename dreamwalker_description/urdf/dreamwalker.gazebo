@@ -27,8 +27,8 @@
                 <vertical>
                     <samples>5</samples>
                     <resolution>1</resolution> 
-                    <min_angle>-0.0872664626</min_angle>
-                    <max_angle>0.0872664626</max_angle> 
+                    <min_angle>-0.03490658504</min_angle>
+                    <max_angle>0.03490658504</max_angle> 
                 </vertical>
             </scan>
             <range>
@@ -69,8 +69,8 @@
                 <vertical>
                     <samples>5</samples>
                     <resolution>1</resolution> 
-                    <min_angle>-0.0872664626</min_angle>
-                    <max_angle>0.0872664626</max_angle> 
+                    <min_angle>-0.03490658504</min_angle>
+                    <max_angle>0.03490658504</max_angle> 
                 </vertical>
          		</scan>
          		<range>
@@ -111,8 +111,8 @@
                 <vertical>
                     <samples>5</samples>
                     <resolution>1</resolution> 
-                    <min_angle>-0.0872664626</min_angle>
-                    <max_angle>0.0872664626</max_angle> 
+                    <min_angle>-0.03490658504</min_angle>
+                    <max_angle>0.03490658504</max_angle> 
                 </vertical>
          		</scan>
          		<range>
@@ -153,8 +153,8 @@
                 <vertical>
                     <samples>5</samples>
                     <resolution>1</resolution> 
-                    <min_angle>-0.0872664626</min_angle>
-                    <max_angle>0.0872664626</max_angle> 
+                    <min_angle>-0.03490658504</min_angle>
+                    <max_angle>0.03490658504</max_angle> 
                 </vertical>
          		</scan>
          		<range>

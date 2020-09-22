@@ -2,12 +2,13 @@
 
 import rospy
 from std_msgs.msg import Float64, String
-from std_msgs.msg import Float32
+from std_msgs.msg import Float32, Int8
 import math
 from dreamwalker_control.srv import Service_GUI_Command, Service_GUI_CommandResponse
 import numpy
 from threading import Thread, Lock
 
+""" dictionary of joint command topic names """
 joint_node = { "shoulder1": "/dreamwalker/shoulder_joint1_position_controller/command", 
 				"shoulder2": "/dreamwalker/shoulder_joint2_position_controller/command",
 				"shoulder3": "/dreamwalker/shoulder_joint3_position_controller/command",
@@ -139,17 +140,24 @@ class Joint():
 class Robot():
 	def __init__(self):
 		
-		rospy.init_node('leg_test')
+		rospy.init_node('robot_control')
 
 		rospy.loginfo("Initializing the robot")
 
 		service=rospy.Service('command_service',Service_GUI_Command, self.turn_on_off)
 		self.command = -1
+
+		self._steering_value_sub = rospy.Subscriber('steering_value', Int8, self.update_steering_value)
+		self.steering_value = -1
+
 		# leg objects
 		self._leg1 = Leg(name="FL", servo1=joint_node["shoulder1"], servo2=joint_node["limb1"], servo3=joint_node["knee1"])
 		self._leg2 = Leg(name="FR", servo1=joint_node["shoulder2"], servo2=joint_node["limb2"], servo3=joint_node["knee2"])
 		self._leg3 = Leg(name="BL", servo1=joint_node["shoulder3"], servo2=joint_node["limb3"], servo3=joint_node["knee3"])
 		self._leg4 = Leg(name="BR", servo1=joint_node["shoulder4"], servo2=joint_node["limb4"], servo3=joint_node["knee4"])
+
+	def update_steering_value(self, value):
+		self.steering = value.data
 
 	def initialize(self):
 		""" setting robot legs to base position"""
@@ -329,10 +337,12 @@ class Robot():
 				self.initialize()
 			elif self.command == 0:
 				self.set_idle()
-			elif self.command == 1:
+			elif self.command == 1 and self.steering == 1:
 				self.gait_init()
 				while self.command == 1:
 					self.gait()
+					if self.steering != int(1):
+						self.command = 0
 			elif self.command == 2:
 				self.go_left()
 			elif self.command == 3:
