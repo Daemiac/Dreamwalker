@@ -22,7 +22,7 @@ joint_node = { "shoulder1": "/dreamwalker/shoulder_joint1_position_controller/co
 				"knee3": "/dreamwalker/knee_joint3_position_controller/command",
 				"knee4": "/dreamwalker/knee_joint4_position_controller/command" }
 
-gait_p1 = ([0, -81, 116], [0, -66, 117], [0, -48, 98])
+gait_p1 = ([0, -77, 110], [0, -62, 111], [0, -48, 98])
 gait_p2 = ([0, -52, 99], [0, -55, 99], [0, -58, 100])
 gait_p3 = ([0, -60, 100], [0, -63, 100], [0, -65, 99])
 gait_p4 = ([0, -68, 99], [0, -70, 98], [0, -72, 97])
@@ -144,11 +144,13 @@ class Robot():
 
 		rospy.loginfo("Initializing the robot")
 
-		service=rospy.Service('command_service',Service_GUI_Command, self.turn_on_off)
+		service=rospy.Service('command_service',Service_GUI_Command, self.get_command)
 		self.command = -1
 
 		self._steering_value_sub = rospy.Subscriber('steering_value', Int8, self.update_steering_value)
-		self.steering_value = -1
+		self.steering = -1
+
+		self.mode = 0
 
 		# leg objects
 		self._leg1 = Leg(name="FL", servo1=joint_node["shoulder1"], servo2=joint_node["limb1"], servo3=joint_node["knee1"])
@@ -306,7 +308,7 @@ class Robot():
 		self.work_threads(t1, t2, t3, t4)
 
 	
-	def turn_on_off(self, request):
+	def get_command(self, request):
 		if request.command=="FORWARD":
 			self.command = 1
 			return Service_GUI_CommandResponse("Robot going forward")
@@ -328,31 +330,49 @@ class Robot():
 		elif request.command=="STOP":
 			self.command = 0
 			return Service_GUI_CommandResponse("State: IDLE")
+		elif request.command=="AUTO":
+			self.mode = 1
+			return Service_GUI_CommandResponse("Switched to autonomous mode")
+		elif request.command=="MANUAL":
+			self.mode = 0
+			return Service_GUI_CommandResponse("Switched to manual mode")
 
 	def run(self):
 		rate = rospy.Rate(50)
 
 		while not rospy.is_shutdown():
-			if self.command == -1:
-				self.initialize()
-			elif self.command == 0:
-				self.set_idle()
-			elif self.command == 1 and self.steering == 1:
-				self.gait_init()
-				while self.command == 1:
+			if self.mode == 0:
+				if self.command == -1:
+					self.initialize()
+				elif self.command == 0:
+					self.set_idle()
+				elif self.command == 1:
+					self.gait_init()
+					while self.command == 1:
+						self.gait()
+						if self.steering == int(0):
+							self.command = 0
+						elif self.steering == int(2):
+							self.command = 4
+						elif self.steering == int(3):
+							self.command = 5
+				elif self.command == 2:
+					self.go_left()
+				elif self.command == 3:
+					self.go_right()
+				elif self.command == 4:
+					self.spin_left()
+				elif self.command == 5:
+					self.spin_right()
+				elif self.command == 6:
+					self.go_backwards()
+			elif self.mode == 1:
+				if self.steering == 2:
 					self.gait()
-					if self.steering != int(1):
-						self.command = 0
-			elif self.command == 2:
-				self.go_left()
-			elif self.command == 3:
-				self.go_right()
-			elif self.command == 4:
-				self.spin_left()
-			elif self.command == 5:
-				self.spin_right()
-			elif self.command == 6:
-				self.go_backwards()	
+				elif self.steering == 1:
+					self.spin_left()
+				elif self.steering == 3:
+					self.spin_right()	
 
 			rate.sleep()
 

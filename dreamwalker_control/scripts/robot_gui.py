@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'robot_steering_gui.ui'
+# Form implementation generated from reading ui file 'robot_gui4.ui'
 #
 # Created by: PyQt4 UI code generator 4.12.1
 #
@@ -31,17 +31,15 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
-
 class Ui_MainWindow(object):
 
     #service client
     rospy.wait_for_service('command_service')
     commanded_service = rospy.ServiceProxy('command_service', Service_GUI_Command)
 
-
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(800, 600)
+        MainWindow.resize(420, 680)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
         self.pushButton_forward = QtGui.QPushButton(self.centralwidget)
@@ -64,49 +62,9 @@ class Ui_MainWindow(object):
         self.pushButton_stop.setFont(font)
         self.pushButton_stop.setObjectName(_fromUtf8("pushButton_stop"))
         self.textBrowser = QtGui.QTextBrowser(self.centralwidget)
-        self.textBrowser.setGeometry(QtCore.QRect(25, 350, 750, 200))
+        self.textBrowser.setGeometry(QtCore.QRect(30, 350, 360, 200))
         self.textBrowser.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
-        self.front_sensor_value = QtGui.QLCDNumber(self.centralwidget)
-        self.front_sensor_value.setGeometry(QtCore.QRect(550, 110, 80, 40))
-        font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        self.front_sensor_value.setFont(font)
-        self.front_sensor_value.setObjectName(_fromUtf8("front_sensor_value"))
-        self.left_sensor_value = QtGui.QLCDNumber(self.centralwidget)
-        self.left_sensor_value.setGeometry(QtCore.QRect(440, 110, 80, 40))
-        self.left_sensor_value.setObjectName(_fromUtf8("left_sensor_value"))
-        self.right_sensor_value = QtGui.QLCDNumber(self.centralwidget)
-        self.right_sensor_value.setGeometry(QtCore.QRect(660, 110, 80, 40))
-        self.right_sensor_value.setObjectName(_fromUtf8("right_sensor_value"))
-        self.back_sensor_value = QtGui.QLCDNumber(self.centralwidget)
-        self.back_sensor_value.setGeometry(QtCore.QRect(550, 200, 80, 40))
-        self.back_sensor_value.setObjectName(_fromUtf8("back_sensor_value"))
-        self.label_sensor_values = QtGui.QLabel(self.centralwidget)
-        self.label_sensor_values.setGeometry(QtCore.QRect(530, 60, 140, 30))
-        font = QtGui.QFont()
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_sensor_values.setFont(font)
-        self.label_sensor_values.setObjectName(_fromUtf8("label_sensor_values"))
-        self.left_sensor_label = QtGui.QLabel(self.centralwidget)
-        self.left_sensor_label.setGeometry(QtCore.QRect(450, 160, 67, 17))
-        self.left_sensor_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.left_sensor_label.setObjectName(_fromUtf8("left_sensor_label"))
-        self.front_sensor_label = QtGui.QLabel(self.centralwidget)
-        self.front_sensor_label.setGeometry(QtCore.QRect(560, 160, 67, 17))
-        self.front_sensor_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.front_sensor_label.setObjectName(_fromUtf8("front_sensor_label"))
-        self.right_sensor_label = QtGui.QLabel(self.centralwidget)
-        self.right_sensor_label.setGeometry(QtCore.QRect(670, 160, 67, 17))
-        self.right_sensor_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.right_sensor_label.setObjectName(_fromUtf8("right_sensor_label"))
-        self.back_sensor_label = QtGui.QLabel(self.centralwidget)
-        self.back_sensor_label.setGeometry(QtCore.QRect(560, 250, 67, 17))
-        self.back_sensor_label.setAlignment(QtCore.Qt.AlignCenter)
-        self.back_sensor_label.setObjectName(_fromUtf8("back_sensor_label"))
         self.pushButton_spinLEFT = QtGui.QPushButton(self.centralwidget)
         self.pushButton_spinLEFT.setGeometry(QtCore.QRect(50, 50, 90, 50))
         self.pushButton_spinLEFT.setObjectName(_fromUtf8("pushButton_spinLEFT"))
@@ -121,9 +79,23 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label.setFont(font)
         self.label.setObjectName(_fromUtf8("label"))
+        self.pushButton = QtGui.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(90, 610, 89, 25))
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(230, 610, 121, 25))
+        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        self.label_2 = QtGui.QLabel(self.centralwidget)
+        self.label_2.setGeometry(QtCore.QRect(180, 570, 67, 17))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName(_fromUtf8("label_2"))
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 420, 22))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
@@ -138,6 +110,8 @@ class Ui_MainWindow(object):
         QtCore.QObject.connect(self.pushButton_stop, QtCore.SIGNAL(_fromUtf8("clicked()")), self.stopMovement)
         QtCore.QObject.connect(self.pushButton_spinRIGHT, QtCore.SIGNAL(_fromUtf8("clicked()")), self.spinRight)
         QtCore.QObject.connect(self.pushButton_spinLEFT, QtCore.SIGNAL(_fromUtf8("clicked()")), self.spinLeft)
+        QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.manual)
+        QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), self.autonomous)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -147,14 +121,12 @@ class Ui_MainWindow(object):
         self.pushButton_right.setText(_translate("MainWindow", "RIGHT", None))
         self.pushButton_left.setText(_translate("MainWindow", "LEFT", None))
         self.pushButton_stop.setText(_translate("MainWindow", "STOP", None))
-        self.label_sensor_values.setText(_translate("MainWindow", "Sensor Values", None))
-        self.left_sensor_label.setText(_translate("MainWindow", "LEFT", None))
-        self.front_sensor_label.setText(_translate("MainWindow", "FRONT", None))
-        self.right_sensor_label.setText(_translate("MainWindow", "RIGHT", None))
-        self.back_sensor_label.setText(_translate("MainWindow", "BACK", None))
         self.pushButton_spinLEFT.setText(_translate("MainWindow", "SPIN LEFT", None))
         self.pushButton_spinRIGHT.setText(_translate("MainWindow", "SPIN RIGHT", None))
         self.label.setText(_translate("MainWindow", "Log info", None))
+        self.pushButton.setText(_translate("MainWindow", "MANUAL", None))
+        self.pushButton_2.setText(_translate("MainWindow", "AUTONOMOUS", None))
+        self.label_2.setText(_translate("MainWindow", "Mode", None))
 
     def goBackward(self):
         command = self.commanded_service("BACKWARD")
@@ -191,6 +163,15 @@ class Ui_MainWindow(object):
         obtained_feedback = command.response
         self.textBrowser.append(obtained_feedback)
 
+    def manual(self):
+        command = self.commanded_service("MANUAL")
+        obtained_feedback = command.response
+        self.textBrowser.append(obtained_feedback)
+
+    def autonomous(self):
+        command = self.commanded_service("AUTO")
+        obtained_feedback = command.response
+        self.textBrowser.append(obtained_feedback)
 
 
 if __name__ == "__main__":
@@ -206,5 +187,3 @@ if __name__ == "__main__":
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
-
-

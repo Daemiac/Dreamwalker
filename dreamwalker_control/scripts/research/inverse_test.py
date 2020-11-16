@@ -5,9 +5,9 @@ from numpy import *
 
 def generate_trajectory():
     # starting point
-    x = 4
-    y = 95
-    z = 0
+    x = 24
+    y = 75
+    z = 8
     point_list = []
     for _ in range(1, 2):
         point = [round(x, 1), y, z]
