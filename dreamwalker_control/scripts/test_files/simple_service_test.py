@@ -5,7 +5,8 @@ import rospy
 #we need ServiceExample for the first message type,
 #and the ServiceExampleResponse from the second message type from the  ServiceExample.srv file
 from dreamwalker_control.srv import Service_GUI_Command, Service_GUI_CommandResponse
- 
+
+
 def turn_on_off(request):
  if request.command=="FORWARD":
     return  Service_GUI_CommandResponse('Robot going forward')

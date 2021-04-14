@@ -59,10 +59,10 @@
     <remap from="/joint_states" to="/dreamwalker/joint_states" />
   </node>
 
-  <!--<node pkg="dreamwalker_control" type="jointtest_gui_node.py" name="GUI_node" output="screen">
+  <node pkg="dreamwalker_control" type="joint_test_gui.py" name="GUI" output="screen">
   </node>
 
-  <node pkg="dreamwalker_control" type="joint_test_node.py" name="control_node" output="screen">
+  <node pkg="dreamwalker_control" type="joint_test.py" name="joint_test1" output="screen">
   </node> -->
 
 </launch>

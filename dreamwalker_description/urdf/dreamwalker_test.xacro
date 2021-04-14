@@ -53,7 +53,7 @@
 			<inertia ixx="0.000003218011" ixy="0.000000199995" ixz="0" iyy="0.000001946476" iyz="0" izz="0.000004027678"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="-0.007 0.0225 0" rpy="0 0 0"/>
 			<geometry>
 				<box size="0.034 0.045 0.0175"/>
@@ -103,7 +103,7 @@
 			<inertia ixx="0.000003218011" ixy="-0.000000199995" ixz="0" iyy="0.000001946476" iyz="0" izz="0.000004027678"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="-0.007 -0.0225 0" rpy="0 0 0"/>
 			<geometry>
 				<box size="0.034 0.045 0.0175"/>
@@ -128,7 +128,7 @@
 			<inertia ixx="0.000003218011" ixy="0.000000199995" ixz="0" iyy="0.000001946476" iyz="0" izz="0.000004027678"/>
 		</inertial>
 
-		<collision>
+		<collision name="collision_base">
 			<origin xyz="0.007 -0.0225 0" rpy="0 0 0"/>
 			<geometry>
 				<box size="0.034 0.045 0.0175"/>
@@ -166,7 +166,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur1.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="red"/>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -192,7 +192,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur2.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="red"/>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -218,7 +218,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur3.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="red"/>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -244,7 +244,7 @@
 			<geometry>
 				<mesh filename="package://dreamwalker_description/meshes/link_femur4.stl" scale="0.001 0.001 0.001" />
 			</geometry>
-			<material name="red"/>
+			<material name="black"/>
 		</visual>
 
 	</link>
@@ -361,7 +361,7 @@
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
@@ -388,7 +388,7 @@
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
@@ -415,7 +415,7 @@
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
@@ -442,7 +442,7 @@
 		<collision>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<geometry>
-				<mesh filename="package://dreamwalker_description/meshes/link_foot.stl" scale="0.001 0.001 0.001" />
+				<mesh filename="package://dreamwalker_description/meshes/link_foot.dae" scale="0.001 0.001 0.001" />
 			</geometry>
 			<!-- <contact_coefficient mu="100.0" mu2="100.0" k_p="10000.0"  k_d="100.0" /> -->
 		</collision>
@@ -468,6 +468,7 @@
 		<parent link="main_body"/>
 		<child link="link_shoulder1"/>
 		<limit effort="2.5" velocity="1.0" lower="-0.5235987755983" upper="0.5235987755983" />
+		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
 	<joint name="shoulder_joint2" type="revolute">
@@ -476,7 +477,7 @@
 		<axis xyz="0 1 0"/>
 		<parent link="main_body"/>
 		<child link="link_shoulder2"/>
-		<limit effort="2.5" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
+		<limit effort="2.5" velocity="1.0" lower="-0.5235987755983" upper="0.5235987755983" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -486,7 +487,7 @@
 		<axis xyz="0 1 0"/>
 		<parent link="main_body"/>
 		<child link="link_shoulder3"/>
-		<limit effort="2.5" velocity="5.0" lower="-0.5235987755983" upper="0.5235987755983" />
+		<limit effort="2.5" velocity="1.0" lower="-0.5235987755983" upper="0.5235987755983" />
 		<!--<dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -506,7 +507,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_shoulder1"/>
 		<child link="link_femur1"/>
-		<limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<limit effort="2.5" velocity="1.0" lower="-1.57079" upper="1.57079" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -516,7 +517,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_shoulder2"/>
 		<child link="link_femur2"/>
-		<limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<limit effort="2.5" velocity="1.0" lower="-1.57079" upper="1.57079" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -526,7 +527,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_shoulder3"/>
 		<child link="link_femur3"/>
-		<limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<limit effort="2.5" velocity="1.0" lower="-1.57079" upper="1.57079" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -536,7 +537,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_shoulder4"/>
 		<child link="link_femur4"/>
-		<limit effort="30" velocity="1.0" lower="-1.57079" upper="1.57079" />
+		<limit effort="2.5" velocity="1.0" lower="-1.57079" upper="1.57079" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -546,7 +547,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_femur1"/>
 		<child link="link_tibia1"/>
-		<limit effort="30" velocity="1.0" lower="0" upper="2.09439" />
+		<limit effort="2.5" velocity="1.0" lower="0" upper="2.617993878" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -556,7 +557,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_femur2"/>
 		<child link="link_tibia2"/>
-		<limit effort="30" velocity="1.0" lower="0" upper="2.09439" />
+		<limit effort="2.5" velocity="1.0" lower="0" upper="2.617993878" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -566,7 +567,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_femur3"/>
 		<child link="link_tibia3"/>
-		<limit effort="30" velocity="1.0" lower="0" upper="2.09439" />
+		<limit effort="2.5" velocity="1.0" lower="0" upper="2.617993878" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
@@ -576,7 +577,7 @@
 		<axis xyz="1 0 0"/>
 		<parent link="link_femur4"/>
 		<child link="link_tibia4"/>
-		<limit effort="30" velocity="1.0" lower="0" upper="2.09439" />
+		<limit effort="2.5" velocity="1.0" lower="0" upper="2.617993878" />
 		<!-- <dynamics damping="0.0" friction="1.0"/> -->
 	</joint>
 
