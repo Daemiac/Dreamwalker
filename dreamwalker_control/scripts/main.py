@@ -1,12 +1,16 @@
 #!/usr/bin/env python
 
+import math
+from threading import Thread, Lock
+
+import numpy
 import rospy
+
 from std_msgs.msg import Float64, String
 from std_msgs.msg import Float32, Int8
-import math
+
 from dreamwalker_control.srv import Service_GUI_Command, Service_GUI_CommandResponse
-import numpy
-from threading import Thread, Lock
+
 
 """ dictionary of joint command topic names """
 joint_node = { "shoulder1": "/dreamwalker/shoulder_joint1_position_controller/command", 

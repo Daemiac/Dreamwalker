@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import rospy
 import fuzzylab as fl
+
 from std_msgs.msg import Int8
 from geometry_msgs.msg import Point
 

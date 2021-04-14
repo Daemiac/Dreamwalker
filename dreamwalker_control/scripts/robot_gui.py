@@ -8,14 +8,16 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+import sys
+import threading
+
 import rospy
 import roslib
 from PyQt4 import QtCore, QtGui
+
 from std_msgs.msg import String, Float32, Int32
 from sensor_msgs.msg import Range
 from dreamwalker_control.srv import Service_GUI_Command, Service_GUI_CommandResponse
-import sys
-import threading
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -178,8 +180,6 @@ if __name__ == "__main__":
     rospy.init_node('gui_node')
     r = rospy.Rate(100)
     rospy.loginfo("GUI initialized, let's get started!")
-
-    #x = threading.Thread(target=)
 
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
