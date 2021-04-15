@@ -8,12 +8,12 @@ As a master's degree student I majored in biomechanics and robotics. While being
 ### Things I learned
 - how to set up dual boot of Linux Ubuntu and Windows 10 operating systems;
 - basics of Robot Operating System (ROS) metasystem;
-- Creating simulation worlds for Gazebo simulator;
+- creating simulation worlds for Gazebo simulator;
 - creating description of robot in URDF and XACRO formats;
 - rospy library;
 - creating GUIs with QtDesigner;
 - deeper understanding of Python programming language;
-- **working with documentation**
+- **learning from and working with software documentation**
 
 ### Project overview
 
@@ -21,7 +21,7 @@ As a master's degree student I majored in biomechanics and robotics. While being
 
 ![right-left swing](https://user-images.githubusercontent.com/51023622/114757579-51ceee00-9d5c-11eb-8904-d62f83f91584.gif)
 
-### Usage
+### How to launch
 
 🚧🚧🚧
 
