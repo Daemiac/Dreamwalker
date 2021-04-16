@@ -9,7 +9,7 @@ As a master's degree student I majored in biomechanics and robotics. While being
 ![](https://img.shields.io/badge/OS-Ubuntu_18.04-informational?style=flat-square&logo=<>&logoColor=white&color=red)
 ![](https://img.shields.io/badge/ROS-Melodic_Morenia-informational?style=flat-square&logo=ROS&logoColor=white&color=orange)
 ![](https://img.shields.io/badge/GAZEBO-9.0-informational?style=flat-square&logo=Gazebo&logoColor=white&color=yellow)
-![](https://img.shields.io/badge/Code-Python2.7-informational?style=flat-square&logo=Python&logoColor=white&color=critical)
+![](https://img.shields.io/badge/Python-2.7-informational?style=flat-square&logo=Python&logoColor=white&color=critical)
 
 
 
