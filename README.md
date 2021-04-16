@@ -5,15 +5,13 @@ Master's degree final project which included design, simulation and creating wal
 
 As a master's degree student I majored in biomechanics and robotics. While being an overly ambitious person, I wished to make use of as many learned skills as possible during development of my master's final project. In addition I wanted to create an opportunity to push my Python programming skills to higher level. Then, inspired by Boston Dynamics' creations, I decided to make my own quadruped robot. Unfortunately I couldn't afford to build actual robot but, thanks to my thesis advisor's advice, I found out about possibility of making realisic simulation with use of Robot Operating System and Gazebo simulator. As a result I created simulation of my own quadruped robot and developed its movement control software.
 
-### Things I learned
-- how to set up dual boot of Linux Ubuntu and Windows 10 operating systems;
-- basics of Robot Operating System (ROS) metasystem;
-- creating simulation worlds for Gazebo simulator;
-- creating description of robot in URDF and XACRO formats;
-- rospy library;
-- creating GUIs with QtDesigner;
-- deeper understanding of Python programming language;
-- **learning from and working with software documentation**
+### Technologies and Tools
+![](https://img.shields.io/badge/OS-Ubuntu_18.04-informational?style=flat-square&logo=<LOGO_NAME>&logoColor=white&color=red)
+![](https://img.shields.io/badge/ROS-Melodic_Morenia-informational?style=flat-square&logo=<LOGO_NAME>&logoColor=white&color=orange)
+![](https://img.shields.io/badge/GAZEBO-9.0-informational?style=flat-square&logo=<LOGO_NAME>&logoColor=white&color=yellow)
+![](https://img.shields.io/badge/Python-2.7-informational?style=flat-square&logo=<LOGO_NAME>&logoColor=white&color=important)
+
+
 
 ### Project overview
 
@@ -24,6 +22,17 @@ As a master's degree student I majored in biomechanics and robotics. While being
 ### How to launch
 
 🚧🚧🚧
+
+### Things I learned
+- how to set up dual boot of Linux Ubuntu and Windows 10 operating systems;
+- basics of Robot Operating System (ROS) metasystem;
+- creating simulation worlds for Gazebo simulator;
+- creating description of robot in URDF and XACRO formats;
+- rospy library;
+- creating GUIs with QtDesigner;
+- deeper understanding of Python programming language;
+- basics of fuzzy logic;
+- **learning from and working with software documentation**
 
 ### License
 [MIT](https://choosealicense.com/licenses/mit/)
