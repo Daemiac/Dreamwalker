@@ -122,7 +122,7 @@ class Leg():
 
 
 class Joint():
-	""" Simulating servomotor """
+	""" A class which imitates servomotor's work """
 	def __init__(self, command, up_limit, low_limit):
 		self.command = command
 		self._pub = rospy.Publisher(self.command, Float64, queue_size=10)
@@ -142,6 +142,7 @@ class Joint():
 
 
 class Robot():
+	""" A class that represents robot's working """
 	def __init__(self):
 		
 		rospy.init_node('robot_control')
@@ -163,6 +164,7 @@ class Robot():
 		self._leg4 = Leg(name="BR", servo1=joint_node["shoulder4"], servo2=joint_node["limb4"], servo3=joint_node["knee4"])
 
 	def update_steering_value(self, value):
+		""" Updates steering value based on sensor system readings """
 		self.steering = value.data
 
 	def initialize(self):
@@ -184,6 +186,7 @@ class Robot():
 		t4.join()
 
 	def set_idle(self):
+		""" Set's the robot to idle position """
 		self.speed = 0.01
 
 		t1 = Thread(target=self._leg1.move_to_point, args=(self._leg1.base_position, self.speed,))
@@ -194,6 +197,7 @@ class Robot():
 		self.work_threads(t1, t2, t3, t4)
 
 	def gait_init(self):
+		""" Sets the robot to "ready to move" position"""
 		self.speed = 0.01
 		self._leg1.move_to_point(gait_p4[2], self.speed)
 		self._leg4.move_to_point(gait_p3[2], self.speed)
@@ -201,6 +205,7 @@ class Robot():
 		self._leg3.move_to_point(gait_p1[2], self.speed)
 
 	def gait(self):
+		""" Sets the robot to go forward """
 		self.speed1 = 0.01
 		self.speed2 = 0.01
 
@@ -238,6 +243,7 @@ class Robot():
 		self.work_threads(t1, t2, t3, t4)
 
 	def go_left(self):
+		""" Sets the robot to go left """
 		self.speed = 0.01
 
 		self._leg1.make_step(left1, self.speed)
@@ -254,6 +260,7 @@ class Robot():
 		self._leg4.make_step(side_to_base, self.speed)
 
 	def go_right(self):
+		""" Sets the robot to go right """
 		self.speed = 0.01
 
 		self._leg2.make_step(right1, self.speed)
@@ -270,6 +277,7 @@ class Robot():
 		self._leg3.make_step(side_to_base, self.speed)
 
 	def spin_left(self):
+		""" Sets the robot to spin left """
 		self.speed = 0.01
 
 		self._leg1.make_step(left1, self.speed)
@@ -286,6 +294,7 @@ class Robot():
 		self._leg3.make_step(side_to_base, self.speed)
 
 	def spin_right(self):
+		""" Sets the robot to spin right """
 		self.speed = 0.01
 
 		self._leg2.make_step(right1, self.speed)
@@ -302,6 +311,7 @@ class Robot():
 		self._leg4.make_step(side_to_base, self.speed)
 
 	def go_backwards(self):
+		""" Sets the robot to go backward """
 		self.speed = 0.01
 
 		t1 = Thread(target=self._leg1.make_step, args=(step1_b, self.speed,))
@@ -313,6 +323,7 @@ class Robot():
 
 	
 	def get_command(self, request):
+		""" Changes "command" value during manual mode based on GUI's signals """
 		if request.command=="FORWARD":
 			self.command = 1
 			return Service_GUI_CommandResponse("Robot going forward")
@@ -342,9 +353,11 @@ class Robot():
 			return Service_GUI_CommandResponse("Switched to manual mode")
 
 	def run(self):
+		""" Main loop of steering the robot """
 		rate = rospy.Rate(50)
 
 		while not rospy.is_shutdown():
+			""" If mode set to manual """
 			if self.mode == 0:
 				if self.command == -1:
 					self.initialize()
@@ -370,6 +383,7 @@ class Robot():
 					self.spin_right()
 				elif self.command == 6:
 					self.go_backwards()
+			""" Else """
 			elif self.mode == 1:
 				if self.steering == 2:
 					self.gait()
