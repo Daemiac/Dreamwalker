@@ -383,7 +383,6 @@ class Robot():
 					self.spin_right()
 				elif self.command == 6:
 					self.go_backwards()
-			""" Else """
 			elif self.mode == 1:
 				if self.steering == 2:
 					self.gait()
